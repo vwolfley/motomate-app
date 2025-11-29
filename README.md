@@ -1,6 +1,11 @@
-# Wdd430AngularFinal
+# wdd430-angular-final
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
+
+### Built Using CLI Commands
+
+- ng new cms --prefix=cms --no-standalone --no-routing
+- ng g c <component name> --skip-tests
 
 ## Development server
 

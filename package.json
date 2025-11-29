@@ -1,12 +1,54 @@
 {
   "name": "wdd430-angular-final",
   "version": "0.0.0",
+  "date": "2025-11-27",
+  "created": "2025-11-28",
+  "copyright": "2025",
+  "description": "Final application for WDD 430 - Fall 2025 -BYUI",
+  "author": "Vern Wolfley",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vwolfley/wdd430-angular-final"
+  },
+  "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
+    "start:server": "nodemon server.js",
+    "start:all": "concurrently \"ng serve --open\" \"nodemon server.js\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:mongo": "mongod --dbpath ./data/db"
+  },
+  "dependencies": {
+    "@angular/common": "^20.3.0",
+    "@angular/compiler": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "@angular/forms": "^20.3.0",
+    "@angular/platform-browser": "^20.3.0",
+    "@angular/router": "^20.3.0",
+    "bootstrap": "^5.3.8",
+    "express": "^5.1.0",
+    "mongoose": "^7.8.7",
+    "mongoose-unique-validator": "^4.0.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.3.1",
+    "@angular/cli": "^20.3.1",
+    "@angular/compiler-cli": "^20.3.0",
+    "@types/jasmine": "~5.1.0",
+    "concurrently": "^9.2.1",
+    "jasmine-core": "~5.9.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "nodemon": "^3.1.11",
+    "typescript": "~5.9.2"
   },
   "prettier": {
     "printWidth": 100,
@@ -20,29 +62,8 @@
       }
     ]
   },
-  "private": true,
-  "dependencies": {
-    "@angular/common": "^20.3.0",
-    "@angular/compiler": "^20.3.0",
-    "@angular/core": "^20.3.0",
-    "@angular/forms": "^20.3.0",
-    "@angular/platform-browser": "^20.3.0",
-    "@angular/router": "^20.3.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
-  },
-  "devDependencies": {
-    "@angular/build": "^20.3.1",
-    "@angular/cli": "^20.3.1",
-    "@angular/compiler-cli": "^20.3.0",
-    "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.9.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.9.2"
-  }
+  "contributors": [
+    "Vern Wolfley"
+  ],
+  "license": "MIT"
 }
