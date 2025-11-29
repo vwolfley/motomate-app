@@ -2,10 +2,12 @@ import { NgModule, provideBrowserGlobalErrorListeners,provideZonelessChangeDetec
 import { BrowserModule } from '@angular/platform-browser';
 
 import { App } from './app';
+import { Header } from './header/header';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Header
   ],
   imports: [
     BrowserModule
