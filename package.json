@@ -1,5 +1,5 @@
 {
-  "name": "wdd430-angular-final",
+  "name": "motomate-app",
   "version": "0.0.0",
   "date": "2025-11-27",
   "created": "2025-11-28",
@@ -8,7 +8,7 @@
   "author": "Vern Wolfley",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vwolfley/wdd430-angular-final"
+    "url": "https://github.com/vwolfley/motomate-app.git"
   },
   "private": true,
   "scripts": {
