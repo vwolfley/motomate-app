@@ -15,7 +15,7 @@ export class PurchaseInfo {
 
 export class Vehicle {
   constructor(
-    public id: string,
+    public id: number,
     public year: string,
     public make: string,
     public model: string,
