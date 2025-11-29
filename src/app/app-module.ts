@@ -11,6 +11,7 @@ import { VehicleDetail } from './vehicles/vehicle-detail/vehicle-detail';
 import { MaintenanceList } from './maintenance/maintenance-list/maintenance-list';
 import { MaintenanceEdit } from './maintenance/maintenance-edit/maintenance-edit';
 import { MaintenanceDetail } from './maintenance/maintenance-detail/maintenance-detail';
+import { VehicleItem } from './vehicles/vehicle-item/vehicle-item';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MaintenanceDetail } from './maintenance/maintenance-detail/maintenance-
     VehicleDetail,
     MaintenanceList,
     MaintenanceEdit,
-    MaintenanceDetail
+    MaintenanceDetail,
+    VehicleItem
   ],
   imports: [
     BrowserModule
