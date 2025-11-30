@@ -2,13 +2,30 @@
 
 ## wdd430-angular-final
 
+Final application for WDD 430 - Fall 2025 -BYUI
 
+This will be a Single Page Application (SPA) that uses the MEAN (MongoDB, Express, Angular, and NodeJS) stack.
+
+The application needs to include the following:
+
+- Angular component(s)
+- Angular service(s)
+- Node web service(s)
+- MongoDB database
+
+It should support the CRUD (Create, Read, Update, and Delete) methods of the application data.
+
+## Project Idea
+
+### MotoMate – Your Vehicle Inventory & Maintenance Companion
+
+MotoMate is the ultimate app for vehicle owners who want to stay organized and on top of maintenance. Keep track of all your vehicles in one place, log maintenance history, schedule upcoming services, and record costs, parts replaced, and important details like mileage and engine type. With MotoMate, managing your cars, trucks, or motorcycles has never been easier. Stay informed, save time, and keep your vehicles running smoothly with a smart, easy-to-use interface designed for vehicle enthusiasts and everyday drivers alike.
 
 ## Built Using CLI Commands
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
 
-- ng new cms --prefix=cms --no-standalone --no-routing
+- ng new cms --prefix=app --no-standalone --no-routing
 
 ## Code scaffolding
 
@@ -24,29 +41,17 @@ For a complete list of available schematics (such as `components`, `directives`,
 ng generate --help
 ```
 
-
 ### Available Scripts
 
 In the project directory, you can run:
 
-#### `npm run dev`
+#### `start:all`
 
 - Compiles raw source code into both `debug` and `production` versions.
 - Runs the application in development mode.
-- Opens [http://localhost:8080](http://localhost:8080) in your browser for live preview.
+- Opens [http://localhost:4200](http://localhost:4200) in your browser for live preview.
 - The page automatically reloads whenever you make edits.
 - Displays linting errors and warnings directly in the console for easier debugging.
-
-#### `npm run start`
-
-- Compiles raw source code into `production` versions.
-- Runs the application in production mode.
-- Used to deploy on Render.com
-
-#### `npm run swagger`
-
-- Automatically generates the swagger.json
-- Useful for testing API endpoints and ensuring up-to-date documentation.
 
 ---
 
