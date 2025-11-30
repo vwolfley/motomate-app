@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wdd430-angular-final": {
+    "motomate-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -73,10 +73,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "wdd430-angular-final:build:production"
+              "buildTarget": "motomate-app:build:production"
             },
             "development": {
-              "buildTarget": "wdd430-angular-final:build:development"
+              "buildTarget": "motomate-app:build:development"
             }
           },
           "defaultConfiguration": "development"

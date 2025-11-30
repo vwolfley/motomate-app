@@ -1,38 +1,42 @@
-import { NgModule, provideBrowserGlobalErrorListeners,provideZonelessChangeDetection, } from '@angular/core';
+import {
+  NgModule,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { App } from './app';
 import { Header } from './header/header';
 import { Vehicles } from './vehicles/vehicles';
-import { Maintenance } from './maintenance/maintenance';
+import { VehicleItem } from './vehicles/vehicle-item/vehicle-item';
 import { VehicleList } from './vehicles/vehicle-list/vehicle-list';
 import { VehicleEdit } from './vehicles/vehicle-edit/vehicle-edit';
 import { VehicleDetail } from './vehicles/vehicle-detail/vehicle-detail';
+import { Maintenance } from './maintenance/maintenance';
 import { MaintenanceList } from './maintenance/maintenance-list/maintenance-list';
 import { MaintenanceEdit } from './maintenance/maintenance-edit/maintenance-edit';
 import { MaintenanceDetail } from './maintenance/maintenance-detail/maintenance-detail';
-import { VehicleItem } from './vehicles/vehicle-item/vehicle-item';
+
+import { AppRoutingModule } from './app-routing.module';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     App,
     Header,
     Vehicles,
-    Maintenance,
+    VehicleItem,
     VehicleList,
     VehicleEdit,
     VehicleDetail,
+    Maintenance,
     MaintenanceList,
     MaintenanceEdit,
     MaintenanceDetail,
-    VehicleItem
+
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [
-    provideBrowserGlobalErrorListeners(),provideZonelessChangeDetection()
-  ],
-  bootstrap: [App]
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [provideBrowserGlobalErrorListeners(), provideZonelessChangeDetection(), provideHttpClient()],
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}

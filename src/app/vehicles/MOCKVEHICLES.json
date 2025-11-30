@@ -1,0 +1,86 @@
+[
+  {
+    "_id": { "$oid": "675093000000000000000001" },
+    "id": 1,
+    "year": "2018",
+    "make": "Honda",
+    "model": "Civic",
+    "trim": "EX",
+    "bodyStyle": "Sedan",
+    "transmission": "Automatic",
+    "fuelType": "Gasoline",
+    "driveType": "FWD",
+    "engine": "2.0L I4",
+    "vin": "19XFC2F59JE000001",
+    "mileage": 30000,
+    "color": "Blue",
+    "description": "A reliable and fuel-efficient sedan.",
+    "licensePlate": {
+      "state": "CA",
+      "licenseNumber": "7ABC123"
+    },
+    "purchaseInfo": {
+      "purchaseDate": "2019-06-20T00:00:00.000Z",
+      "purchasePrice": 20000,
+      "purchaseMileage": 15000,
+      "dealerName": "City Honda"
+    },
+    "isActive": true
+  },
+  {
+    "_id": { "$oid": "675093000000000000000002" },
+    "id": 2,
+    "year": "2020",
+    "make": "Ford",
+    "model": "F-150",
+    "trim": "Lariat",
+    "bodyStyle": "Truck",
+    "transmission": "Automatic",
+    "fuelType": "Gasoline",
+    "driveType": "4WD",
+    "engine": "3.5L V6",
+    "vin": "1FTEW1E50LFA00002",
+    "mileage": 15000,
+    "color": "Red",
+    "description": "A powerful and versatile pickup truck.",
+    "licensePlate": {
+      "state": "TX",
+      "licenseNumber": "TX12345"
+    },
+    "purchaseInfo": {
+      "purchaseDate": "2020-08-10T00:00:00.000Z",
+      "purchasePrice": 35000,
+      "purchaseMileage": 5000,
+      "dealerName": "Lone Star Ford"
+    },
+    "isActive": true
+  },
+  {
+    "_id": { "$oid": "675093000000000000000003" },
+    "id": 3,
+    "year": "2017",
+    "make": "Toyota",
+    "model": "RAV4",
+    "trim": "XLE",
+    "bodyStyle": "SUV",
+    "transmission": "Automatic",
+    "fuelType": "Hybrid",
+    "driveType": "AWD",
+    "engine": "2.5L I4 Hybrid",
+    "vin": "JTMRFREV0HD000003",
+    "mileage": 40000,
+    "color": "White",
+    "description": "A compact SUV with great fuel economy.",
+    "licensePlate": {
+      "state": "FL",
+      "licenseNumber": "FL67890"
+    },
+    "purchaseInfo": {
+      "purchaseDate": "2018-03-15T00:00:00.000Z",
+      "purchasePrice": 25000,
+      "purchaseMileage": 20000,
+      "dealerName": "Sunshine Toyota"
+    },
+    "isActive": true
+  }
+]

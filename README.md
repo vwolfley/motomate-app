@@ -1,28 +1,21 @@
-# wdd430-angular-final
+# motomate-app
+
+## wdd430-angular-final
+
+
+
+## Built Using CLI Commands
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
 
-### Built Using CLI Commands
-
 - ng new cms --prefix=cms --no-standalone --no-routing
-- ng g c <component name> --skip-tests
-
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
 ```bash
-ng generate component component-name
+ng g c <component-name> --skip-tests
 ```
 
 For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
@@ -31,34 +24,58 @@ For a complete list of available schematics (such as `components`, `directives`,
 ng generate --help
 ```
 
-## Building
 
-To build the project run:
+### Available Scripts
 
-```bash
-ng build
-```
+In the project directory, you can run:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+#### `npm run dev`
 
-## Running unit tests
+- Compiles raw source code into both `debug` and `production` versions.
+- Runs the application in development mode.
+- Opens [http://localhost:8080](http://localhost:8080) in your browser for live preview.
+- The page automatically reloads whenever you make edits.
+- Displays linting errors and warnings directly in the console for easier debugging.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+#### `npm run start`
 
-```bash
-ng test
-```
+- Compiles raw source code into `production` versions.
+- Runs the application in production mode.
+- Used to deploy on Render.com
 
-## Running end-to-end tests
+#### `npm run swagger`
 
-For end-to-end (e2e) testing, run:
+- Automatically generates the swagger.json
+- Useful for testing API endpoints and ensuring up-to-date documentation.
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+### 💻 Technology
+
+- This course is using
+
+<a href="https://code.visualstudio.com/" title="vscode"><img src="https://github.com/get-icon/geticon/raw/master/icons/visual-studio-code.svg" alt="vscode" width="31px" height="31px"></a>
+<a href="https://tc39.es/ecma262/" title="ECMAScript 6"><img src="https://github.com/get-icon/geticon/raw/master/icons/es6.svg" alt="ECMAScript 6" width="31px" height="31px"></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript"><img src="https://github.com/get-icon/geticon/raw/master/icons/javascript.svg" alt="JavaScript" width="31px" height="31px"></a>
+<a href="https://www.w3.org/TR/html5/" title="HTML5"><img src="https://github.com/get-icon/geticon/raw/master/icons/html-5.svg" alt="HTML5" width="31px" height="31px"></a>
+<a href="https://www.w3.org/TR/CSS/" title="CSS3"><img src="https://github.com/get-icon/geticon/raw/master/icons/css-3.svg" alt="CSS3" width="31px" height="31px"></a>
+<a href="https://nodejs.org/en" title="nodejs"><img src="https://github.com/get-icon/geticon/raw/master/icons/nodejs-icon.svg" alt="nodejs" width="31px" height="31px"></a>
+<a href="https://eslint.org/" title="ESLint"><img src="https://github.com/get-icon/geticon/raw/master/icons/eslint.svg" alt="ESLint" width="31px" height="31px"></a>
+<a href="https://prettier.io/" title="Prettier"><img src="https://github.com/get-icon/geticon/raw/master/icons/prettier.svg" alt="Prettier" width="31px" height="31px"></a>
+<a href="https://www.markdownguide.org/" title="markdown"><img src="https://github.com/get-icon/geticon/raw/master/icons/markdown.svg" alt="markdown" width="31px" height="31px"></a>
+<a href="https://git-scm.com/" title="git"><img src="https://github.com/get-icon/geticon/raw/master/icons/git-icon.svg" alt="git" width="31px" height="31px"></a>
+<a href="https://github.com/" title="github"><img src="https://github.com/get-icon/geticon/raw/master/icons/github-icon.svg" alt="github" width="31px" height="31px"></a>
+
+---
+
+### :warning: Licensing
+
+This project is licensed under the MIT license.
+
+- [LICENSE](LICENSE)
+
+[Back to top](#motomate-app)
