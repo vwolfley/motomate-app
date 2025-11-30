@@ -6,7 +6,9 @@
 
   <div class="card-body">
     <div class="center-panel">
-      <!-- loop -->
+      @for (vehicleEl of vehicles; track vehicleEl.id) {
+      <app-vehicle-item [vehicle]="vehicleEl"></app-vehicle-item>
+      }
     </div>
   </div>
 </div>

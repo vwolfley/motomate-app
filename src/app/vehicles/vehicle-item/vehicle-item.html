@@ -1,6 +1,7 @@
 <a
-  class="list-group-item d-flex justify-content-between align-items-center documentDiv"
+  class="list-group-item d-flex justify-content-between align-items-center vehicle-item"
+  routerLinkActive="active"
+  [routerLink]="[vehicle.id]"
 >
-  <h6 class="mb-0">Vehicle Name</h6>
+  <h6 class="mb-0">{{ vehicle.make }}</h6>
 </a>
-

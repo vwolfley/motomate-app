@@ -4,6 +4,7 @@ import {
   provideZonelessChangeDetection,
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { App } from './app';
 import { Header } from './header/header';
@@ -33,10 +34,13 @@ import { provideHttpClient } from '@angular/common/http';
     MaintenanceList,
     MaintenanceEdit,
     MaintenanceDetail,
-
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [provideBrowserGlobalErrorListeners(), provideZonelessChangeDetection(), provideHttpClient()],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZonelessChangeDetection(),
+    provideHttpClient(),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

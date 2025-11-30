@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { Vehicle } from '../vehicle.model';
+import { VehiclesService } from '../vehicle.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -6,6 +10,24 @@ import { Component } from '@angular/core';
   templateUrl: './vehicle-list.html',
   styleUrl: './vehicle-list.css',
 })
-export class VehicleList {
+export class VehicleList implements OnInit, OnDestroy {
+  vehicles: Vehicle[] = [];
+  vehicleId: string = '';
+  private vehicleChangeSub!: Subscription;
 
+  constructor(private vehiclesService: VehiclesService) {}
+
+  ngOnInit() {
+    this.vehiclesService.getVehicles();
+    // Subscribe to vehicle changes
+    this.vehicleChangeSub = this.vehiclesService.vehicleListChangedEvent.subscribe(
+      (vehicles: Vehicle[]) => {
+        this.vehicles = vehicles;
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.vehicleChangeSub.unsubscribe();
+  }
 }
