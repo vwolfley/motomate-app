@@ -1,1 +1,49 @@
-<p>vehicle-detail works!</p>
+<div *ngIf="vehicle" class="card shadow-sm my-3">
+  <!-- Header -->
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h4 class="mb-0">Vehicle Details</h4>
+    <div>
+      <a class="btn btn-success me-2" [routerLink]="['edit']">Edit</a>
+      <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="card-body">
+    <!-- Vehicle Title with Icon -->
+    <div class="d-flex align-items-center mb-4">
+      <img
+        src="../../../assets/auto-logo.png"
+        alt="car icon"
+        style="width: 50px; height: 50px"
+        class="me-3"
+      />
+
+      <div>
+        <h5 class="mb-1">
+          {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }} {{ vehicle.trim }}
+        </h5>
+        <small class="text-muted">
+          {{ vehicle.driveType }} • {{ vehicle.engine }} • {{ vehicle.fuelType }}
+        </small>
+      </div>
+    </div>
+
+    <!-- Details list -->
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Body Style:</strong> {{ vehicle.bodyStyle }}</li>
+      <li class="list-group-item"><strong>Color:</strong> {{ vehicle.color }}</li>
+      <li class="list-group-item"><strong>Transmission:</strong> {{ vehicle.transmission }}</li>
+      <li class="list-group-item"><strong>Fuel Type:</strong> {{ vehicle.fuelType }}</li>
+      <li class="list-group-item">
+        <strong>Mileage:</strong> {{ vehicle.mileage | number }} miles
+      </li>
+      <li class="list-group-item">
+        <strong>License Plate:</strong> {{ vehicle.licensePlate.state }} |
+        {{ vehicle.licensePlate.licenseNumber }}
+      </li>
+      <li class="list-group-item"><strong>VIN:</strong> {{ vehicle.vin }}</li>
+      <li class="list-group-item"><strong>Description:</strong> {{ vehicle.description }}</li>
+    </ul>
+  </div>
+</div>

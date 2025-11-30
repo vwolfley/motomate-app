@@ -12,6 +12,19 @@ const purchaseInfoSchema = new mongoose.Schema({
   dealerName: { type: String, required: true },
 });
 
+const vehicleServiceSpecsSchema = new mongoose.Schema({
+  oilType: { type: String, required: true },
+  oilWeight: { type: String, required: true },
+  oilCapacity: { type: String, required: true },
+  oilFilter: { type: String, required: true },
+  airFilter: { type: String, required: true },
+  cabinAirFilter: { type: String, required: true },
+  batteryGroupSize: { type: String, required: true },
+  tireSize: { type: String, required: true },
+  wiperBladeSizeDriver: { type: String, required: true },
+  wiperBladeSizePassenger: { type: String, required: true },
+});
+
 const vehicleSchema = new mongoose.Schema({
   id: { type: String, required: true }, // Or use mongoose.Types.ObjectId if preferred
   year: { type: String, required: true },
@@ -27,7 +40,7 @@ const vehicleSchema = new mongoose.Schema({
   mileage: { type: Number, required: true },
   color: { type: String },
   description: { type: String },
-
+  serviceSpecs: { type: vehicleServiceSpecsSchema, required: true },
   licensePlate: { type: licensePlateSchema, required: true },
   purchaseInfo: { type: purchaseInfoSchema, required: true },
 

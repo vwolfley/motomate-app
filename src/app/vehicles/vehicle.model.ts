@@ -13,6 +13,21 @@ export class PurchaseInfo {
   ) {}
 }
 
+export class VehicleServiceSpecs {
+  constructor(
+    public oilType: string,
+    public oilWeight: string,
+    public oilCapacity: string,
+    public oilFilter: string,
+    public airFilter: string,
+    public cabinAirFilter: string,
+    public batteryGroupSize: string,
+    public tireSize: string,
+    public wiperBladeSizeDriver: string,
+    public wiperBladeSizePassenger: string
+  ) {}
+}
+
 export class Vehicle {
   constructor(
     public id: string,
@@ -30,6 +45,7 @@ export class Vehicle {
     public color: string,
     public description: string,
     public licensePlate: LicensePlate,
+    public serviceSpecs: VehicleServiceSpecs,
     public purchaseInfo: PurchaseInfo,
     public isActive: boolean
   ) {}

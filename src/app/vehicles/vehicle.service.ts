@@ -112,19 +112,19 @@ export class VehiclesService {
   //     });
   // }
 
-  // // Delete a vehicle
-  // deleteVehicle(vehicle: Vehicle) {
-  //   if (!vehicle) {
-  //     return;
-  //   }
-  //   const pos = this.vehicles.findIndex((v) => v.id === vehicle.id);
-  //   if (pos < 0) {
-  //     return;
-  //   }
-  //   // delete from database
-  //   this.http.delete(`${this.vehiclesUrl}/` + vehicle.id).subscribe((response) => {
-  //     this.vehicles.splice(pos, 1);
-  //     this.vehicleListChangedEvent.next(this.vehicles.slice());
-  //   });
-  // }
+  // Delete a vehicle
+  deleteVehicle(vehicle: Vehicle) {
+    if (!vehicle) {
+      return;
+    }
+    const pos = this.vehicles.findIndex((v) => v.id === vehicle.id);
+    if (pos < 0) {
+      return;
+    }
+    // delete from database
+    this.http.delete(`${this.vehiclesUrl}/` + vehicle.id).subscribe((response) => {
+      this.vehicles.splice(pos, 1);
+      this.vehicleListChangedEvent.next(this.vehicles.slice());
+    });
+  }
 }
