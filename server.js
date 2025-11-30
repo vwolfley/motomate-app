@@ -42,14 +42,14 @@ app.use(express.static(path.join(__dirname, 'dist/motomate-app/browser')));
 // Tell express to map the default route ('/') to the index route
 app.use('/', index);
 app.use('/vehicles', vehicleRoutes);
-app.use('/maintenance', maintenanceRoutes);
+// app.use('/maintenance', maintenanceRoutes);
 
 // ... ADD YOUR CODE TO MAP YOUR URL'S TO ROUTING FILES HERE ...
 
 // establish a connection to the mongo database
 async function connectDB() {
   try {
-    await mongoose.connect('mongodb://localhost:27017/wdd430-cms');
+    await mongoose.connect('mongodb://localhost:27017/motomate-app');
     console.log('MongoDB connected');
   } catch (err) {
     console.log('Connection failed: ' + err);

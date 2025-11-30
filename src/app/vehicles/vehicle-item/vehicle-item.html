@@ -1,7 +1,23 @@
 <a
-  class="list-group-item d-flex justify-content-between align-items-center vehicle-item"
+  class="list-group-item list-group-item-action"
   routerLinkActive="active"
   [routerLink]="[vehicle.id]"
 >
-  <h6 class="mb-0">{{ vehicle.make }}</h6>
+  <div class="d-flex align-items-center">
+    <!-- Vehicle Icon -->
+    <img
+      src="../../../assets/auto-logo.png"
+      alt="car icon"
+      style="width: 40px; height: 40px"
+      class="me-3"
+    />
+
+    <!-- Text -->
+    <div>
+      <div class="fw-bold">
+        {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }} {{ vehicle.trim }}
+      </div>
+      <small class="text-muted">{{ vehicle.driveType }} {{ vehicle.engine }}</small>
+    </div>
+  </div>
 </a>

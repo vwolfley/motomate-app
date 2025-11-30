@@ -1,9 +1,5 @@
-.vehicle-item {
-  width: 9rem;
-  height: 11rem;
-  margin: 2px;
-  font-size: 1.3rem;
-  border: solid thin darkgrey;
-  float: left;
-  padding: .25rem
+.list-group-item {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
 }
