@@ -1,6 +1,8 @@
 [
   {
-    "_id": { "$oid": "675093000000000000000001" },
+    "_id": {
+      "$oid": "675093000000000000000001"
+    },
     "id": 1,
     "year": "2018",
     "make": "Honda",
@@ -19,6 +21,18 @@
       "state": "CA",
       "licenseNumber": "7ABC123"
     },
+    "serviceSpecs": {
+      "oilType": "5W-20",
+      "oilWeight": "20",
+      "oilCapacity": "4.5 quarts",
+      "oilFilter": "Honda 15400-PLM-A02",
+      "airFilter": "Honda 17220-RNA-A00",
+      "cabinAirFilter": "Honda 80292-TBA-A01",
+      "batteryGroupSize": "35",
+      "tireSize": "215/55R16",
+      "wiperBladeSizeDriver": "26",
+      "wiperBladeSizePassenger": "22"
+    },
     "purchaseInfo": {
       "purchaseDate": "2019-06-20T00:00:00.000Z",
       "purchasePrice": 20000,
@@ -28,7 +42,9 @@
     "isActive": true
   },
   {
-    "_id": { "$oid": "675093000000000000000002" },
+    "_id": {
+      "$oid": "675093000000000000000002"
+    },
     "id": 2,
     "year": "2020",
     "make": "Ford",
@@ -47,6 +63,18 @@
       "state": "TX",
       "licenseNumber": "TX12345"
     },
+    "serviceSpecs": {
+      "oilType": "5W-20",
+      "oilWeight": "20",
+      "oilCapacity": "4.5 quarts",
+      "oilFilter": "Honda 15400-PLM-A02",
+      "airFilter": "Honda 17220-RNA-A00",
+      "cabinAirFilter": "Honda 80292-TBA-A01",
+      "batteryGroupSize": "35",
+      "tireSize": "215/55R16",
+      "wiperBladeSizeDriver": "26",
+      "wiperBladeSizePassenger": "22"
+    },
     "purchaseInfo": {
       "purchaseDate": "2020-08-10T00:00:00.000Z",
       "purchasePrice": 35000,
@@ -56,7 +84,9 @@
     "isActive": true
   },
   {
-    "_id": { "$oid": "675093000000000000000003" },
+    "_id": {
+      "$oid": "675093000000000000000003"
+    },
     "id": 3,
     "year": "2017",
     "make": "Toyota",
@@ -74,6 +104,18 @@
     "licensePlate": {
       "state": "FL",
       "licenseNumber": "FL67890"
+    },
+    "serviceSpecs": {
+      "oilType": "5W-20",
+      "oilWeight": "20",
+      "oilCapacity": "4.5 quarts",
+      "oilFilter": "Honda 15400-PLM-A02",
+      "airFilter": "Honda 17220-RNA-A00",
+      "cabinAirFilter": "Honda 80292-TBA-A01",
+      "batteryGroupSize": "35",
+      "tireSize": "215/55R16",
+      "wiperBladeSizeDriver": "26",
+      "wiperBladeSizePassenger": "22"
     },
     "purchaseInfo": {
       "purchaseDate": "2018-03-15T00:00:00.000Z",

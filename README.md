@@ -59,11 +59,16 @@ For more information on using the Angular CLI, including detailed command refere
 - This course is using
 
 <a href="https://code.visualstudio.com/" title="vscode"><img src="https://github.com/get-icon/geticon/raw/master/icons/visual-studio-code.svg" alt="vscode" width="31px" height="31px"></a>
+<a href="https://angular.dev/" title="angular"><img src="https://github.com/get-icon/geticon/raw/master/icons/angular-icon.svg" alt="angular" width="31px" height="31px"></a>
 <a href="https://tc39.es/ecma262/" title="ECMAScript 6"><img src="https://github.com/get-icon/geticon/raw/master/icons/es6.svg" alt="ECMAScript 6" width="31px" height="31px"></a>
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript"><img src="https://github.com/get-icon/geticon/raw/master/icons/javascript.svg" alt="JavaScript" width="31px" height="31px"></a>
+<a href="https://www.typescriptlang.org/" title="TypeScript"><img src="https://github.com/get-icon/geticon/raw/master/icons/typescript-icon.svg" alt="JavaScript" width="31px" height="31px"></a>
 <a href="https://www.w3.org/TR/html5/" title="HTML5"><img src="https://github.com/get-icon/geticon/raw/master/icons/html-5.svg" alt="HTML5" width="31px" height="31px"></a>
 <a href="https://www.w3.org/TR/CSS/" title="CSS3"><img src="https://github.com/get-icon/geticon/raw/master/icons/css-3.svg" alt="CSS3" width="31px" height="31px"></a>
 <a href="https://nodejs.org/en" title="nodejs"><img src="https://github.com/get-icon/geticon/raw/master/icons/nodejs-icon.svg" alt="nodejs" width="31px" height="31px"></a>
+<a href="https://nodemon.io/" title="nodemon"><img src="https://github.com/get-icon/geticon/raw/master/icons/nodemon.svg" alt="nodemon" width="31px" height="31px"></a>
+<a href="https://www.mongodb.com/" title="mongodb"><img src="https://github.com/get-icon/geticon/raw/master/icons/mongodb-icon.svg" alt="mongodb" width="31px" height="31px"></a>
+<a href="https://mongoosejs.com/" title="mongoose"><img src="https://github.com/get-icon/geticon/raw/master/icons/mongodb-icon.svg" alt="mongoose" width="31px" height="31px"></a>
 <a href="https://eslint.org/" title="ESLint"><img src="https://github.com/get-icon/geticon/raw/master/icons/eslint.svg" alt="ESLint" width="31px" height="31px"></a>
 <a href="https://prettier.io/" title="Prettier"><img src="https://github.com/get-icon/geticon/raw/master/icons/prettier.svg" alt="Prettier" width="31px" height="31px"></a>
 <a href="https://www.markdownguide.org/" title="markdown"><img src="https://github.com/get-icon/geticon/raw/master/icons/markdown.svg" alt="markdown" width="31px" height="31px"></a>
