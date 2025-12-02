@@ -3,7 +3,6 @@
   <div class="card-header d-flex justify-content-between align-items-center">
     <h4 class="mb-0">Edit Vehicle Details</h4>
     <div>
-      <button class="btn btn-primary me-2" type="submit" [disabled]="f.invalid">Submit</button>
       <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
     </div>
   </div>
@@ -11,24 +10,82 @@
   <!-- Body -->
   <div class="card-body">
     <form id="vehicle-edit" (ngSubmit)="onSubmit(f)" #f="ngForm">
-      <div class="mb-2">
-        <label for="year" class="form-label">Year</label>
-        <input type="text" class="form-control" id="year" placeholder="Year" />
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="year">Year</span>
+        <input type="text" class="form-control" />
       </div>
-      <div class="mb-2">
-        <label for="make" class="form-label">Make</label>
-        <input type="text" class="form-control" id="make" placeholder="Make" />
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="make">Make</span>
+        <input type="text" class="form-control" />
       </div>
-      <div class="mb-2">
-        <label for="model" class="form-label">Model</label>
-        <input type="text" class="form-control" id="model" placeholder="Model" />
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="model">Model</span>
+        <input type="text" class="form-control" />
       </div>
-      <div class="mb-2">
-        <label for="trim" class="form-label">Trim</label>
-        <input type="text" class="form-control" id="trim" placeholder="Trim" />
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="trim">Trim</span>
+        <input type="text" class="form-control" />
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="color">Color</span>
+        <input type="text" class="form-control" />
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="bodyStyle">Body Style</span>
+        <input type="text" class="form-control" />
       </div>
 
-      <button type="submit" class="btn btn-primary me-2">Submit</button>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="driveType">Drive Type</span>
+        <select class="form-select">
+          <option selected>Select Drive Type</option>
+          <option value="FWD">Front-Wheel Drive (FWD)</option>
+          <option value="RWD">Rear-Wheel Drive (RWD)</option>
+          <option value="AWD">All-Wheel Drive (AWD)</option>
+          <option value="4WD">Four-Wheel Drive (4WD)</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="engine">Engine</span>
+        <input type="text" class="form-control" />
+      </div>
+
+      <div class="input-group mb-2">
+         <span class="input-group-text" id="transmission">Transmission</span>
+        <select class="form-select">
+          <option selected>Select Transmission</option>
+          <option value="Automatic">Automatic</option>
+          <option value="Manual">Manual</option>
+          <option value="CVT">CVT (Continuously Variable)</option>
+          <option value="DCT">DCT / Dual-Clutch</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="fuelType">Fuel Type</span>
+        <select class="form-select">
+          <option selected>Select Fuel Type</option>
+          <option value="Gasoline">Gasoline</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Electric">Electric</option>
+          <option value="Hybrid">Hybrid</option>
+          <option value="CNG">Compressed Natural Gas (CNG)</option>
+          <option value="LPG">Liquefied Petroleum Gas (LPG)</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="mileage">Mileage</span>
+        <input type="number" class="form-control" />
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="vin">VIN</span>
+        <input type="text" class="form-control" />
+      </div>
+
+      <button class="btn btn-primary me-2" type="submit" [disabled]="f.invalid">Submit</button>
       <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
     </form>
   </div>
