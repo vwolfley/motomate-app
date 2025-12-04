@@ -2,9 +2,7 @@ const Sequence = require('../models/sequence');
 
 class SequenceGenerator {
   constructor() {
-    this.maxDocumentId = 0;
-    this.maxMessageId = 0;
-    this.maxContactId = 0;
+    this.maxVehicleId = 0;
     this.sequenceId = null;
 
     this.init();
@@ -16,15 +14,11 @@ class SequenceGenerator {
       const sequence = await Sequence.findOne();
       if (sequence) {
         this.sequenceId = sequence._id;
-        this.maxDocumentId = sequence.maxDocumentId;
-        this.maxMessageId = sequence.maxMessageId;
-        this.maxContactId = sequence.maxContactId;
+        this.maxVehicleId = sequence.maxVehicleId;
       } else {
         // If no sequence exists, create one
         const newSeq = new Sequence({
-          maxDocumentId: 0,
-          maxMessageId: 0,
-          maxContactId: 0,
+          maxVehicleId: 0,
         });
         const savedSeq = await newSeq.save();
         this.sequenceId = savedSeq._id;
@@ -45,21 +39,21 @@ class SequenceGenerator {
     let nextId;
 
     switch (collectionType) {
-      case 'documents':
-        this.maxDocumentId++;
-        updateObject = { maxDocumentId: this.maxDocumentId };
-        nextId = this.maxDocumentId;
+      case 'vehicles':
+        this.maxVehicleId++;
+        updateObject = { maxVehicleId: this.maxVehicleId };
+        nextId = this.maxVehicleId;
         break;
-      case 'messages':
-        this.maxMessageId++;
-        updateObject = { maxMessageId: this.maxMessageId };
-        nextId = this.maxMessageId;
-        break;
-      case 'contacts':
-        this.maxContactId++;
-        updateObject = { maxContactId: this.maxContactId };
-        nextId = this.maxContactId;
-        break;
+      // case 'messages':
+      //   this.maxMessageId++;
+      //   updateObject = { maxMessageId: this.maxMessageId };
+      //   nextId = this.maxMessageId;
+      //   break;
+      // case 'contacts':
+      //   this.maxContactId++;
+      //   updateObject = { maxContactId: this.maxContactId };
+      //   nextId = this.maxContactId;
+      //   break;
       default:
         return -1;
     }

@@ -25,9 +25,21 @@ router.post('/', async (req, res) => {
 
     const vehicle = new Vehicle({
       id: maxVehicleId,
-      name: req.body.name,
+      year: req.body.year,
+      make: req.body.make,
+      model: req.body.model,
+      trim: req.body.trim,
+      color: req.body.color,
+      bodyStyle: req.body.bodyStyle,
+      fuelType: req.body.fuelType,
+      driveType: req.body.driveType,
+      engine: req.body.engine,
+      transmission: req.body.transmission,
+      mileage: req.body.mileage,
+      vin: req.body.vin,
+      licensePlate: req.body.licensePlate,
       description: req.body.description,
-      url: req.body.url,
+      isActive: req.body.isActive,
     });
 
     const createdVehicle = await vehicle.save();
@@ -57,8 +69,21 @@ router.put('/:id', async (req, res) => {
     }
 
     // Update fields
-    vehicle.name = req.body.name;
+    vehicle.year = req.body.year;
+    vehicle.make = req.body.make;
+    vehicle.model = req.body.model;
+    vehicle.trim = req.body.trim;
+    vehicle.color = req.body.color;
+    vehicle.bodyStyle = req.body.bodyStyle;
+    vehicle.fuelType = req.body.fuelType;
+    vehicle.driveType = req.body.driveType;
+    vehicle.engine = req.body.engine;
+    vehicle.transmission = req.body.transmission;
+    vehicle.mileage = req.body.mileage;
+    vehicle.vin = req.body.vin;
+    vehicle.licensePlate = req.body.licensePlate;
     vehicle.description = req.body.description;
+    vehicle.isActive = req.body.isActive;
 
     await Vehicle.updateOne({ id: req.params.id }, vehicle);
 

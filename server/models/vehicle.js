@@ -1,50 +1,68 @@
 const mongoose = require('mongoose');
 
-const licensePlateSchema = new mongoose.Schema({
-  state: { type: String, required: true },
-  licenseNumber: { type: String, required: true },
-});
+const licensePlateSchema = new mongoose.Schema(
+  {
+    state: { type: String },
+    licenseNumber: { type: String },
+  },
+  { _id: false }
+);
 
-const purchaseInfoSchema = new mongoose.Schema({
-  purchaseDate: { type: Date, required: true },
-  purchasePrice: { type: Number, required: true },
-  purchaseMileage: { type: Number, required: true },
-  dealerName: { type: String, required: true },
-});
+const purchaseInfoSchema = new mongoose.Schema(
+  {
+    purchaseDate: { type: Date },
+    purchasePrice: { type: Number },
+    purchaseMileage: { type: Number },
+    dealerName: { type: String },
+  },
+  { _id: false }
+);
 
-const vehicleServiceSpecsSchema = new mongoose.Schema({
-  oilType: { type: String, required: true },
-  oilWeight: { type: String, required: true },
-  oilCapacity: { type: String, required: true },
-  oilFilter: { type: String, required: true },
-  airFilter: { type: String, required: true },
-  cabinAirFilter: { type: String, required: true },
-  batteryGroupSize: { type: String, required: true },
-  tireSize: { type: String, required: true },
-  wiperBladeSizeDriver: { type: String, required: true },
-  wiperBladeSizePassenger: { type: String, required: true },
-});
+const vehicleServiceSpecsSchema = new mongoose.Schema(
+  {
+    oilType: { type: String },
+    oilWeight: { type: String },
+    oilCapacity: { type: String },
+    oilFilter: { type: String },
+    airFilter: { type: String },
+    cabinAirFilter: { type: String },
+    batteryGroupSize: { type: String },
+    tireSize: { type: String },
+    wiperBladeSizeDriver: { type: String },
+    wiperBladeSizePassenger: { type: String },
+  },
+  { _id: false }
+);
 
-const vehicleSchema = new mongoose.Schema({
-  id: { type: String, required: true }, // Or use mongoose.Types.ObjectId if preferred
-  year: { type: String, required: true },
-  make: { type: String, required: true },
-  model: { type: String, required: true },
-  trim: { type: String },
-  bodyStyle: { type: String },
-  transmission: { type: String },
-  fuelType: { type: String },
-  driveType: { type: String },
-  engine: { type: String },
-  vin: { type: String, required: true },
-  mileage: { type: Number, required: true },
-  color: { type: String },
-  description: { type: String },
-  serviceSpecs: { type: vehicleServiceSpecsSchema, required: true },
-  licensePlate: { type: licensePlateSchema, required: true },
-  purchaseInfo: { type: purchaseInfoSchema, required: true },
-
-  isActive: { type: Boolean, default: true },
-});
+const vehicleSchema = new mongoose.Schema(
+  {
+    id: { type: String, required: true }, // Or use mongoose.Types.ObjectId if preferred
+    year: { type: String, required: true },
+    make: { type: String, required: true },
+    model: { type: String, required: true },
+    trim: { type: String },
+    bodyStyle: { type: String },
+    color: { type: String },
+    fuelType: { type: String },
+    driveType: { type: String },
+    engine: { type: String },
+    transmission: { type: String },
+    vin: { type: String },
+    mileage: { type: Number, required: true },
+    description: { type: String },
+    serviceSpecs: { type: vehicleServiceSpecsSchema },
+    licensePlate: { type: licensePlateSchema },
+    purchaseInfo: { type: purchaseInfoSchema },
+    isActive: { type: Boolean, default: true },
+  },
+  {
+    toJSON: {
+      versionKey: false, // removes __v
+      transform: function (doc, ret) {
+        delete ret._id; // removes _id
+      },
+    },
+  }
+);
 
 module.exports = mongoose.model('Vehicle', vehicleSchema);

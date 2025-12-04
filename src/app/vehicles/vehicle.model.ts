@@ -1,9 +1,5 @@
 // vehicle.model.ts
 
-export class LicensePlate {
-  constructor(public state: string, public licenseNumber: string) {}
-}
-
 export class PurchaseInfo {
   constructor(
     public purchaseDate: Date,
@@ -27,7 +23,9 @@ export class VehicleServiceSpecs {
     public wiperBladeSizePassenger: string
   ) {}
 }
-
+export class LicensePlate {
+  constructor(public state: string, public licenseNumber: string) {}
+}
 export class Vehicle {
   constructor(
     public id: string,
@@ -35,21 +33,21 @@ export class Vehicle {
     public make: string,
     public model: string,
     public trim: string,
+    public color: string,
     public bodyStyle: string,
-    public transmission: string,
     public fuelType: string,
     public driveType: string,
     public engine: string,
-    public vin: string,
+    public transmission: string,
     public mileage: number,
-    public color: string,
-    public description: string,
+    public vin: string,
     public licensePlate: LicensePlate,
-    public serviceSpecs: VehicleServiceSpecs,
-    public purchaseInfo: PurchaseInfo,
+    public description: string,
     public isActive: boolean
   ) {}
 }
+// public serviceSpecs: VehicleServiceSpecs,
+// public purchaseInfo: PurchaseInfo,
 
 // trim: string — e.g., “XLE”, “Sport”, “Limited”
 // bodyStyle: string — e.g., “Sedan”, “SUV”, “Truck”

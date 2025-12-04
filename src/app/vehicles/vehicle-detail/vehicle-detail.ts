@@ -23,7 +23,7 @@ export class VehicleDetail implements OnInit {
   ) {}
 
   onDelete() {
-    // this.vehiclesService.deleteVehicle(this.vehicle);
+    this.vehiclesService.deleteVehicle(this.vehicle);
     this.router.navigate(['/vehicles']);
   }
 

@@ -1,1 +1,189 @@
-<p>vehicle-edit works!</p>
+<div class="card shadow-sm my-3">
+  <!-- Header -->
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h4 class="mb-0">Edit Vehicle Details</h4>
+    <div>
+      <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="card-body">
+    <form id="vehicle-edit" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="year">Year</span>
+        <input
+          type="text"
+          class="form-control"
+          required
+          [(ngModel)]="vehicle!.year"
+          name="year"
+          #name="ngModel"
+        />
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="make">Make</span>
+        <input
+          type="text"
+          class="form-control"
+          required
+          [(ngModel)]="vehicle!.make"
+          name="make"
+          #name="ngModel"
+        />
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="model">Model</span>
+        <input
+          type="text"
+          class="form-control"
+          required
+          [(ngModel)]="vehicle!.model"
+          name="model"
+          #name="ngModel"
+        />
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="trim">Trim</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="vehicle!.trim"
+          name="trim"
+          #name="ngModel"
+        />
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="color">Color</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="vehicle!.color"
+          name="color"
+          #name="ngModel"
+        />
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="bodyStyle">Body Style</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="vehicle!.bodyStyle"
+          name="bodyStyle"
+          #name="ngModel"
+        />
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="driveType">Drive Type</span>
+        <select
+          class="form-select"
+          [(ngModel)]="vehicle!.driveType"
+          name="driveType"
+          #name="ngModel"
+        >
+          <option selected>Select Drive Type</option>
+          <option value="FWD">Front-Wheel Drive (FWD)</option>
+          <option value="RWD">Rear-Wheel Drive (RWD)</option>
+          <option value="AWD">All-Wheel Drive (AWD)</option>
+          <option value="4WD">Four-Wheel Drive (4WD)</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="engine">Engine</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="vehicle!.engine"
+          name="engine"
+          #name="ngModel"
+        />
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="transmission">Transmission</span>
+        <select
+          class="form-select"
+          [(ngModel)]="vehicle!.transmission"
+          name="transmission"
+          #name="ngModel"
+        >
+          <option selected>Select Transmission</option>
+          <option value="Automatic">Automatic</option>
+          <option value="Manual">Manual</option>
+          <option value="CVT">CVT (Continuously Variable)</option>
+          <option value="DCT">DCT / Dual-Clutch</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="fuelType">Fuel Type</span>
+        <select class="form-select" [(ngModel)]="vehicle!.fuelType" name="fuelType" #name="ngModel">
+          <option selected>Select Fuel Type</option>
+          <option value="Gasoline">Gasoline</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Electric">Electric</option>
+          <option value="Hybrid">Hybrid</option>
+          <option value="CNG">Compressed Natural Gas (CNG)</option>
+          <option value="LPG">Liquefied Petroleum Gas (LPG)</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="mileage">Mileage</span>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="vehicle!.mileage"
+          name="mileage"
+          #name="ngModel"
+        />
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="vin">VIN</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="vehicle!.vin"
+          name="vin"
+          #name="ngModel"
+        />
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="licensePlateState">License Plate State</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="vehicle!.licensePlate.state"
+          name="licensePlateState"
+          #name="ngModel"
+        />
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="licensePlateNumber">License Plate Number</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="vehicle!.licensePlate.licenseNumber"
+          name="licensePlateNumber"
+          #name="ngModel"
+        />
+      </div>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="vin">Description</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="vehicle!.description"
+          name="description"
+          #name="ngModel"
+        />
+      </div>
+
+      <button class="btn btn-primary me-2" type="submit" [disabled]="f.invalid">Submit</button>
+      <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
+    </form>
+  </div>
+</div>
