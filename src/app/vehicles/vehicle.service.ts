@@ -34,7 +34,7 @@ export class VehiclesService {
           return 0;
         });
         this.vehicleListChangedEvent.next(this.vehicles.slice());
-        console.log(this.vehicles);
+        // console.log(this.vehicles);
       },
       // ERROR method
       error: (error: any) => {
@@ -63,54 +63,54 @@ export class VehiclesService {
     return maxId;
   }
 
-  // // Add a new vehicle
-  // addVehicle(newVehicle: Vehicle) {
-  //   if (!newVehicle) {
-  //     return;
-  //   }
-  //   // make sure id of the new vehicle is empty
-  //   newVehicle.id = '';
+  // Add a new vehicle
+  addVehicle(newVehicle: Vehicle) {
+    if (!newVehicle) {
+      return;
+    }
+    // make sure id of the new vehicle is empty
+    newVehicle.id = '';
 
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  //   // add to database
-  //   this.http
-  //     .post<{ message: string; vehicle: Vehicle }>(this.vehiclesUrl, newVehicle, {
-  //       headers: headers,
-  //     })
-  //     .subscribe((responseData) => {
-  //       // add new vehicle to vehicles
-  //       this.vehicles.push(responseData.vehicle);
-  //       this.vehicleListChangedEvent.next(this.vehicles.slice());
-  //     });
-  // }
+    // add to database
+    this.http
+      .post<{ message: string; vehicle: Vehicle }>(this.vehiclesUrl, newVehicle, {
+        headers: headers,
+      })
+      .subscribe((responseData) => {
+        // add new vehicle to vehicles
+        this.vehicles.push(responseData.vehicle);
+        this.vehicleListChangedEvent.next(this.vehicles.slice());
+      });
+  }
 
-  // // Update an existing vehicle
-  // updateVehicle(originalVehicle: Vehicle, newVehicle: Vehicle) {
-  //   if (!originalVehicle || !newVehicle) {
-  //     return;
-  //   }
+  // Update an existing vehicle
+  updateVehicle(originalVehicle: Vehicle, newVehicle: Vehicle) {
+    if (!originalVehicle || !newVehicle) {
+      return;
+    }
+    console.log('Updating vehicle:', originalVehicle, newVehicle);
+    const pos = this.vehicles.indexOf(originalVehicle);
+    if (pos < 0) {
+      return;
+    }
 
-  //   const pos = this.vehicles.findIndex((v) => v.id === originalVehicle.id);
-  //   if (pos < 0) {
-  //     return;
-  //   }
+    // set the id of the new vehicle to the id of the old vehicle
+    newVehicle.id = originalVehicle.id;
 
-  //   // set the id of the new vehicle to the id of the old vehicle
-  //   newVehicle.id = originalVehicle.id;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-  //   // update database
-  //   this.http
-  //     .put(`${this.vehiclesUrl}/` + originalVehicle.id, newVehicle, {
-  //       headers: headers,
-  //     })
-  //     .subscribe((response) => {
-  //       this.vehicles[pos] = newVehicle;
-  //       this.vehicleListChangedEvent.next(this.vehicles.slice());
-  //     });
-  // }
+    // update database
+    this.http
+      .put(`${this.vehiclesUrl}/` + originalVehicle.id, newVehicle, {
+        headers: headers,
+      })
+      .subscribe((response) => {
+        this.vehicles[pos] = newVehicle;
+        this.vehicleListChangedEvent.next(this.vehicles.slice());
+      });
+  }
 
   // Delete a vehicle
   deleteVehicle(vehicle: Vehicle) {
