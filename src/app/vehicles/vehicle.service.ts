@@ -62,8 +62,9 @@ export class VehiclesService {
 
     return maxId;
   }
-
+  //***************************** */
   // Add a new vehicle
+  //***************************** */
   addVehicle(newVehicle: Vehicle) {
     if (!newVehicle) {
       return;
@@ -84,13 +85,14 @@ export class VehiclesService {
         this.vehicleListChangedEvent.next(this.vehicles.slice());
       });
   }
-
+  //***************************** */
   // Update an existing vehicle
+  //***************************** */
   updateVehicle(originalVehicle: Vehicle, newVehicle: Vehicle) {
     if (!originalVehicle || !newVehicle) {
       return;
     }
-    console.log('Updating vehicle:', originalVehicle, newVehicle);
+    // console.log('Updating vehicle:', originalVehicle, newVehicle);
     const pos = this.vehicles.indexOf(originalVehicle);
     if (pos < 0) {
       return;
@@ -112,7 +114,9 @@ export class VehiclesService {
       });
   }
 
+  //***************************** */
   // Delete a vehicle
+  //***************************** */
   deleteVehicle(vehicle: Vehicle) {
     if (!vehicle) {
       return;
