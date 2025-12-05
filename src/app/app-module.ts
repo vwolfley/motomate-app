@@ -20,6 +20,7 @@ import { MaintenanceDetail } from './maintenance/maintenance-detail/maintenance-
 
 import { AppRoutingModule } from './app-routing.module';
 import { provideHttpClient } from '@angular/common/http';
+import { MaintenanceItem } from './maintenance/maintenance-item/maintenance-item';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { provideHttpClient } from '@angular/common/http';
     MaintenanceList,
     MaintenanceEdit,
     MaintenanceDetail,
+    MaintenanceItem,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [

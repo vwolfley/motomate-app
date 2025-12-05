@@ -24,7 +24,7 @@ const appRoutes: Routes = [
     path: 'maintenance',
     component: Maintenance,
     children: [
-      { path: 'new', component: MaintenanceEdit },
+      { path: 'new', component: VehicleEdit },
       { path: ':id', component: MaintenanceDetail },
       { path: ':id/edit', component: MaintenanceEdit },
     ],
