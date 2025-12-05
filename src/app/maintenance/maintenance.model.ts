@@ -3,20 +3,12 @@ export class MaintenanceRecord {
     public id: string, // unique id for this record
     public vehicleId: string, // which vehicle this maintenance belongs to
     public type: MaintenanceType, // linked to enum
+    public action: string, // description of the maintenance action
     public datePerformed: Date, // when it was done
     public mileage: number, // vehicle mileage at the time
-    public serviceCenter?: string, // optional, where it was done
     public notes?: string, // optional notes or details
-    public nextDueDate?: Date, // optional: when it’s next due
-    public nextDueMileage?: number, // optional: mileage for next service
     public partsReplaced?: ReplacedPart[], // optional list of parts
     public totalCost?: number, // total cost of service
-    public reminders?: {
-      // optional reminders
-      date?: Date;
-      mileage?: number;
-    },
-    public attachments?: Attachment[] // optional receipts/photos
   ) {}
 }
 
@@ -60,3 +52,25 @@ export class Attachment {
     public description?: string
   ) {}
 }
+
+// export class MaintenanceRecord {
+//   constructor(
+//     public id: string, // unique id for this record
+//     public vehicleId: string, // which vehicle this maintenance belongs to
+//     public type: MaintenanceType, // linked to enum
+//     public datePerformed: Date, // when it was done
+//     public mileage: number, // vehicle mileage at the time
+//     public serviceCenter?: string, // optional, where it was done
+//     public notes?: string, // optional notes or details
+//     public nextDueDate?: Date, // optional: when it’s next due
+//     public nextDueMileage?: number, // optional: mileage for next service
+//     public partsReplaced?: ReplacedPart[], // optional list of parts
+//     public totalCost?: number, // total cost of service
+//     public reminders?: {
+//       // optional reminders
+//       date?: Date;
+//       mileage?: number;
+//     },
+//     public attachments?: Attachment[] // optional receipts/photos
+//   ) {}
+// }
