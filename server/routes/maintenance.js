@@ -7,7 +7,7 @@ const Maintenance = require('../models/maintenance');
 // GET all maintenance records
 router.get('/', async (req, res) => {
   try {
-    const maintenanceRecords = await Maintenance.find();
+    const maintenanceRecords = await Maintenance.find().populate('vehicleId');
     console.log(maintenanceRecords);
     res.status(200).json(maintenanceRecords);
   } catch (err) {

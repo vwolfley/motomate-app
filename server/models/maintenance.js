@@ -12,14 +12,13 @@ const maintenanceSchema = new mongoose.Schema(
       {
         name: { type: String },
         quantity: { type: Number },
-        cost: { type: Number }
-      }
+        cost: { type: Number },
+      },
     ],
     totalCost: { type: Number },
-    notes: { type: String }
+    notes: { type: String },
   },
   { _id: false }
 );
 
 module.exports = mongoose.model('Maintenance', maintenanceSchema);
-
