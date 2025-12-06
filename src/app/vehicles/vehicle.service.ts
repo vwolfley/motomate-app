@@ -17,10 +17,28 @@ export class VehiclesService {
     this.maxVehicleId = this.getMaxId();
   }
 
-  // Firebase endpoint URL
+  // MongoDB endpoint URL
   private vehiclesUrl = 'http://localhost:3000/vehicles';
 
-  // Fetch vehicles from the server
+  //***************************** */
+  // Get Max ID
+  //***************************** */
+  getMaxId(): number {
+    let maxId = 0;
+
+    for (const vehicle of this.vehicles) {
+      const currentId = parseInt(vehicle.id);
+      if (currentId > maxId) {
+        maxId = currentId;
+      }
+    }
+
+    return maxId;
+  }
+
+  //***************************** */
+  // Fetch All Vehicles Records
+  //***************************** */
   getVehicles() {
     this.http.get<Vehicle[]>(this.vehiclesUrl).subscribe({
       // SUCCESS method
@@ -45,23 +63,13 @@ export class VehiclesService {
       },
     });
   }
-
+  //***************************** */
+  // Fetch Vehicle Record by ID
+  //***************************** */
   getVehicle(id: string): Vehicle | null {
     return this.vehicles.find((vehicle) => vehicle.id === id) || null;
   }
 
-  getMaxId(): number {
-    let maxId = 0;
-
-    for (const vehicle of this.vehicles) {
-      const currentId = parseInt(vehicle.id);
-      if (currentId > maxId) {
-        maxId = currentId;
-      }
-    }
-
-    return maxId;
-  }
   //***************************** */
   // Add a new vehicle
   //***************************** */

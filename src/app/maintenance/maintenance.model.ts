@@ -1,14 +1,16 @@
+import { Vehicle } from "../vehicles/vehicle.model";
+
 export class MaintenanceRecord {
   constructor(
     public id: string, // unique id for this record
-    public vehicleId: string, // which vehicle this maintenance belongs to
+    public vehicleId: Vehicle |string, // which vehicle this maintenance belongs to
     public type: MaintenanceType, // linked to enum
     public action: string, // description of the maintenance action
     public datePerformed: Date, // when it was done
     public mileage: number, // vehicle mileage at the time
-    public notes?: string, // optional notes or details
     public partsReplaced?: ReplacedPart[], // optional list of parts
     public totalCost?: number, // total cost of service
+    public notes?: string, // optional notes or details
   ) {}
 }
 

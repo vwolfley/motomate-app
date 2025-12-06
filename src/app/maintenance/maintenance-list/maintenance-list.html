@@ -1,1 +1,9 @@
-<p>maintenance-list works!</p>
+<div class="card my-3">
+  <div class="card-body">
+    <div class="list-group">
+      @for (maintenance of maintenanceRecords; track maintenance.id) {
+      <app-maintenance-item [maintenanceRecord]="maintenance"></app-maintenance-item>
+      }
+    </div>
+  </div>
+</div>
