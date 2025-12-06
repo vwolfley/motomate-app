@@ -38,11 +38,35 @@ export class MaintenanceService {
   //***************************** */
   // Fetch Maintenance Records
   //***************************** */
-  getMaintenanceRecords() {}
+  getMaintenanceRecords() {
+    this.http.get<MaintenanceRecord[]>(this.maintenanceRecordsUrl).subscribe({
+      // SUCCESS method
+      next: (maintenanceRecords: MaintenanceRecord[]) => {
+        this.maintenanceRecords = maintenanceRecords;
+        this.maxMaintenanceId = this.getMaxId();
+        // Sort by make
+        this.maintenanceRecords.sort((a, b) => {
+          if (a.datePerformed < b.datePerformed) return -1;
+          if (a.datePerformed > b.datePerformed) return 1;
+          return 0;
+        });
+        this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
+        console.log(this.maintenanceRecords);
+      },
+      // ERROR method
+      error: (error: any) => {
+        console.error('Error fetching maintenance records:', error);
+      },
+      complete: () => {
+        console.log('Vehicle fetch complete');
+      },
+    });
+  }
   //***************************** */
   // Fetch Maintenance Record by ID
   //***************************** */
   getMaintenanceRecord(id: string): MaintenanceRecord | null {
+    console.log('Fetching maintenance record with ID: ' + id);
     return this.maintenanceRecords.find((record) => record.id === id) || null;
   }
   //***************************** */

@@ -2,17 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 const sequenceGenerator = require('./sequenceGenerator');
-const Vehicle = require('../models/vehicle');
+const Maintenance = require('../models/maintenance');
 
-// GET all vehicles
+// GET all maintenance records
 router.get('/', async (req, res) => {
   try {
-    const vehicles = await Vehicle.find();
-    console.log(vehicles);
-    res.status(200).json(vehicles);
+    const maintenanceRecords = await Maintenance.find();
+    console.log(maintenanceRecords);
+    res.status(200).json(maintenanceRecords);
   } catch (err) {
     res.status(500).json({
-      message: 'An error occurred while fetching vehicles.',
+      message: 'An error occurred while fetching maintenance records.',
       error: err,
     });
   }

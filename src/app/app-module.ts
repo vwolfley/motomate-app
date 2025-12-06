@@ -13,14 +13,16 @@ import { VehicleItem } from './vehicles/vehicle-item/vehicle-item';
 import { VehicleList } from './vehicles/vehicle-list/vehicle-list';
 import { VehicleEdit } from './vehicles/vehicle-edit/vehicle-edit';
 import { VehicleDetail } from './vehicles/vehicle-detail/vehicle-detail';
+
 import { Maintenance } from './maintenance/maintenance';
+import { MaintenanceItem } from './maintenance/maintenance-item/maintenance-item';
 import { MaintenanceList } from './maintenance/maintenance-list/maintenance-list';
 import { MaintenanceEdit } from './maintenance/maintenance-edit/maintenance-edit';
 import { MaintenanceDetail } from './maintenance/maintenance-detail/maintenance-detail';
 
 import { AppRoutingModule } from './app-routing.module';
 import { provideHttpClient } from '@angular/common/http';
-import { MaintenanceItem } from './maintenance/maintenance-item/maintenance-item';
+
 
 @NgModule({
   declarations: [
