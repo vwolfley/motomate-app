@@ -31,7 +31,6 @@ const vehicleServiceSpecsSchema = new mongoose.Schema(
     wiperBladeSizeDriver: { type: String },
     wiperBladeSizePassenger: { type: String },
   },
-  { _id: false }
 );
 
 const vehicleSchema = new mongoose.Schema(

@@ -18,7 +18,6 @@ export class MaintenanceList implements OnInit, OnDestroy{
   constructor(private maintenanceService: MaintenanceService) {}
 
   ngOnInit() {
-    this.maintenanceService.getMaintenanceRecords();
     // Subscribe to maintenance record changes
     this.maintenanceChangeSub = this.maintenanceService.maintenanceListChangedEvent.subscribe(
       (maintenanceRecords: MaintenanceRecord[]) => {

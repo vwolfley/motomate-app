@@ -58,7 +58,7 @@ export class MaintenanceService {
         console.error('Error fetching maintenance records:', error);
       },
       complete: () => {
-        console.log('Vehicle fetch complete');
+        console.log('Maintenance Records fetch complete');
       },
     });
   }

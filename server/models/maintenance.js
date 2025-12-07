@@ -17,8 +17,7 @@ const maintenanceSchema = new mongoose.Schema(
     ],
     totalCost: { type: Number },
     notes: { type: String },
-  },
-  { _id: false }
+  }
 );
 
 module.exports = mongoose.model('Maintenance', maintenanceSchema);
