@@ -51,7 +51,7 @@ export class MaintenanceService {
           return 0;
         });
         this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
-        console.log(this.maintenanceRecords);
+        // console.log(this.maintenanceRecords);
       },
       // ERROR method
       error: (error: any) => {

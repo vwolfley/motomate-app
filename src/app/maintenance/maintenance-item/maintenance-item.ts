@@ -9,4 +9,12 @@ import { MaintenanceRecord } from '../maintenance.model';
 })
 export class MaintenanceItem {
   @Input() maintenanceRecord!: MaintenanceRecord;
+
+  onEdit() {
+    // Logic to edit a maintenance record
+  }
+
+  onDelete() {
+    // Logic to delete a maintenance record
+  }
 }
