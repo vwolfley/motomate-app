@@ -1,1 +1,40 @@
-<p>maintenance-detail works!</p>
+<div *ngIf="vehicle" class="card shadow-sm my-3">
+  <!-- Header -->
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h4 class="mb-0">Maintenance Details</h4>
+    <!-- <div>
+      <a class="btn btn-success me-2" [routerLink]="['edit']">Add Maintenance</a>
+    </div> -->
+  </div>
+
+  <!-- Body -->
+  <div class="card-body">
+    <!-- Vehicle Title with Icon -->
+    <div class="d-flex align-items-center">
+      <img
+        src="../../../assets/auto-logo.png"
+        alt="car icon"
+        style="width: 50px; height: 50px"
+        class="me-3"
+      />
+
+      <div>
+        <h5 class="mb-1">
+          {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }} {{ vehicle.trim }}
+        </h5>
+        <small class="text-muted">
+          {{ vehicle.driveType }} • {{ vehicle.engine }} • {{ vehicle.fuelType }}
+        </small>
+        <h6 class="text-muted my-2">
+      {{ maintenanceRecords.length }} maintenance
+      {{ maintenanceRecords.length === 1 ? 'record' : 'records' }}
+    </h6>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Details list -->
+<div class="card shadow-sm">
+    <app-maintenance-list [maintenanceRecords]="maintenanceRecords"></app-maintenance-list>
+</div>
+

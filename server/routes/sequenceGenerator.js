@@ -3,6 +3,7 @@ const Sequence = require('../models/sequence');
 class SequenceGenerator {
   constructor() {
     this.maxVehicleId = 0;
+    this.maxMaintenanceId = 0;
     this.sequenceId = null;
 
     this.init();
@@ -15,10 +16,12 @@ class SequenceGenerator {
       if (sequence) {
         this.sequenceId = sequence._id;
         this.maxVehicleId = sequence.maxVehicleId;
+        this.maxMaintenanceId = sequence.maxMaintenanceId;
       } else {
         // If no sequence exists, create one
         const newSeq = new Sequence({
           maxVehicleId: 0,
+          maxMaintenanceId: 0,
         });
         const savedSeq = await newSeq.save();
         this.sequenceId = savedSeq._id;
@@ -44,16 +47,11 @@ class SequenceGenerator {
         updateObject = { maxVehicleId: this.maxVehicleId };
         nextId = this.maxVehicleId;
         break;
-      // case 'messages':
-      //   this.maxMessageId++;
-      //   updateObject = { maxMessageId: this.maxMessageId };
-      //   nextId = this.maxMessageId;
-      //   break;
-      // case 'contacts':
-      //   this.maxContactId++;
-      //   updateObject = { maxContactId: this.maxContactId };
-      //   nextId = this.maxContactId;
-      //   break;
+      case 'maintenance':
+        this.maxMaintenanceId++;
+        updateObject = { maxMaintenanceId: this.maxMaintenanceId };
+        nextId = this.maxMaintenanceId;
+        break;
       default:
         return -1;
     }

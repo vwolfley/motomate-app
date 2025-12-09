@@ -1,0 +1,31 @@
+<div class="card shadow-sm my-2">
+  <div class="d-flex align-items-center p-2">
+    <!-- maintenance Icon -->
+    <img
+      src="../../../assets/service-icon.png"
+      alt="maintenance icon"
+      style="width: 40px; height: 40px"
+      class=""
+    />
+    <!-- Text -->
+    <div class="container">
+      <div class="fw-bold d-flex justify-content-between">
+        <div class="">{{ maintenanceRecord.type }} - {{ maintenanceRecord.action }}</div>
+        <div class="">{{ maintenanceRecord.datePerformed | date : 'MM/dd/yyyy' }}</div>
+      </div>
+      <div class="">
+        <div class="mt-1 text-muted">Notes: {{ maintenanceRecord.notes }}</div>
+      </div>
+      <div class="">
+        <small class="text-muted"
+          >Milage: {{ maintenanceRecord.mileage | number : '1.0-0' }} | Total Cost:
+          {{ maintenanceRecord.totalCost | currency : 'USD' : 'symbol' : '1.2-2' }}</small
+        >
+      </div>
+    </div>
+    <div class="d-flex flex-column justify-content-start gap-2 ms-3">
+      <button class="btn btn-success btn-sm" type="button" (click)="onEdit()">Edit</button>
+      <button class="btn btn-danger btn-sm" type="button" (click)="onDelete()">Delete</button>
+    </div>
+  </div>
+</div>

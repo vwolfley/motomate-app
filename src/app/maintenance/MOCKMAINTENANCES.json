@@ -1,0 +1,69 @@
+[
+  {
+    "id": "1",
+    "vehicleId": "1",
+    "type": "Battery Replacement",
+    "action": "Installed new AGM battery",
+    "datePerformed": "2025-04-22T00:00:00.000Z",
+    "mileage": 58820,
+    "partsReplaced": [
+      {
+        "name": "AGM Battery",
+        "quantity": 1,
+        "cost": 189.00
+      }
+    ],
+    "totalCost": 220.00,
+    "notes": "Old battery was failing load test"
+  },
+  {
+    "id": "2",
+    "vehicleId": "1",
+    "type": "Tire Rotation",
+    "action": "Rotated all four tires",
+    "datePerformed": "2025-03-10T00:00:00.000Z",
+    "mileage": 32000,
+    "partsReplaced": [],
+    "totalCost": 25.00,
+    "notes": "Rear tires wearing slightly uneven"
+  },
+  {
+    "id": "3",
+    "vehicleId": "2",
+    "type": "Brake Change",
+    "action": "Replaced front brake pads and rotors",
+    "datePerformed": "2025-02-02T00:00:00.000Z",
+    "mileage": 47020,
+    "partsReplaced": [
+      {
+        "name": "Brake Pads (Front)",
+        "quantity": 4,
+        "cost": 49.99
+      },
+      {
+        "name": "Brake Rotors (Pair)",
+        "quantity": 2,
+        "cost": 129.99
+      }
+    ],
+    "totalCost": 289.99,
+    "notes": "Front left rotor was badly warped"
+  },
+  {
+    "id": "4",
+    "vehicleId": "3",
+    "type": "Oil Change",
+    "action": "Changed oil and filter",
+    "datePerformed": "2025-01-15T00:00:00.000Z",
+    "mileage": 45210,
+    "partsReplaced": [
+      {
+        "name": "Oil Filter",
+        "quantity": 1,
+        "cost": 12.99
+      }
+    ],
+    "totalCost": 64.50,
+    "notes": "Used full synthetic 5W-30"
+  }
+]

@@ -1,1 +1,19 @@
-<p>maintenance-list works!</p>
+ <!-- Header -->
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h4 class="mb-0">Maintenance Items</h4>
+    <div>
+      <a class="btn btn-success me-2" [routerLink]="['edit']">Add Maintenance</a>
+    </div>
+  </div>
+   <!-- Body -->
+  <div class="card-body">
+  <div class="list-group">
+    @for (maintenance of maintenanceRecords; track maintenance.vehicleId) {
+    <app-maintenance-item [maintenanceRecord]="maintenance"> </app-maintenance-item>
+    } @empty {
+    <div class="text-center text-muted py-3">No maintenance records available.</div>
+    }
+  </div>
+</div>
+
+

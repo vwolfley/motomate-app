@@ -31,12 +31,11 @@ const vehicleServiceSpecsSchema = new mongoose.Schema(
     wiperBladeSizeDriver: { type: String },
     wiperBladeSizePassenger: { type: String },
   },
-  { _id: false }
 );
 
 const vehicleSchema = new mongoose.Schema(
   {
-    id: { type: String, required: true }, // Or use mongoose.Types.ObjectId if preferred
+    id: { type: String, required: true, unique: true }, // Or use mongoose.Types.ObjectId if preferred
     year: { type: String, required: true },
     make: { type: String, required: true },
     model: { type: String, required: true },
