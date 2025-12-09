@@ -65,10 +65,15 @@ export class MaintenanceService {
   //***************************** */
   // Fetch Maintenance Record by ID
   //***************************** */
-  getMaintenanceRecord(id: string): MaintenanceRecord | null {
-    console.log('Fetching maintenance record with ID: ' + id);
-    return this.maintenanceRecords.find((record) => record.id === id) || null;
-  }
+  // getMaintenanceRecord(id: string): MaintenanceRecord | null {
+  //   console.log('Fetching maintenance record with ID: ' + id);
+  //   return this.maintenanceRecords.find((record) => record.vehicleId === id) || null;
+  // }
+
+  getMaintenanceRecordsForVehicle(vehicleId: string): MaintenanceRecord[] {
+  return this.maintenanceRecords.filter(record => record.vehicleId === vehicleId);
+}
+
   //***************************** */
   // Add a new maintenance record
   //***************************** */

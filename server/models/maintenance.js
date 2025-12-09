@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const maintenanceSchema = new mongoose.Schema(
   {
-    id: { type: String },
-    vehicleId: { type: mongoose.Schema.Types.ObjectId, ref: 'Vehicle' },
+    id: { type: String, required: true, unique: true },
+    vehicleId: { type: String, required: true },
     type: { type: String },
     action: { type: String },
     datePerformed: { type: Date },
@@ -17,6 +17,14 @@ const maintenanceSchema = new mongoose.Schema(
     ],
     totalCost: { type: Number },
     notes: { type: String },
+  },
+  {
+    toJSON: {
+      versionKey: false, // removes __v
+      transform: function (doc, ret) {
+        delete ret._id; // removes _id
+      },
+    },
   }
 );
 

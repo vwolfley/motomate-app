@@ -16,7 +16,8 @@ import { MaintenanceService } from '../maintenance.service';
 })
 export class MaintenanceDetail implements OnInit {
   vehicle!: Vehicle;
-  maintenance!: MaintenanceRecord;
+  // maintenance!: MaintenanceRecord[];
+  maintenanceRecords: MaintenanceRecord[] = [];
   nativeWindow: any;
 
   constructor(
@@ -33,9 +34,8 @@ export class MaintenanceDetail implements OnInit {
       const id = params['id'];
       console.log('Maintenance Detail for ID: ' + id);
       this.vehicle = this.vehiclesService.getVehicle(id)!;
-      this.maintenance = this.maintenanceService.getMaintenanceRecord(id)!;
+      this.maintenanceRecords = this.maintenanceService.getMaintenanceRecordsForVehicle(id)!;
     });
-
 
     this.nativeWindow = this.windowRefService.getNativeWindow();
   }

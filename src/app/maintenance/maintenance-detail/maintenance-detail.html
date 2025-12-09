@@ -25,11 +25,16 @@
         <small class="text-muted">
           {{ vehicle.driveType }} • {{ vehicle.engine }} • {{ vehicle.fuelType }}
         </small>
+        <h6 class="text-muted">
+      {{ maintenanceRecords.length }} maintenance
+      {{ maintenanceRecords.length === 1 ? 'record' : 'records' }}
+    </h6>
       </div>
     </div>
   </div>
 </div>
 <!-- Details list -->
 <div class="card shadow-sm my-2">
-    <app-maintenance-list></app-maintenance-list>
+    <app-maintenance-list [maintenanceRecords]="maintenanceRecords"></app-maintenance-list>
 </div>
+

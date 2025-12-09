@@ -1,9 +1,11 @@
 <div class="card-body">
   <div class="list-group">
-    @for (maintenance of maintenanceRecords; track maintenance.id) {
+    @for (maintenance of maintenanceRecords; track maintenance.vehicleId) {
     <app-maintenance-item [maintenanceRecord]="maintenance"> </app-maintenance-item>
     } @empty {
     <div class="text-center text-muted py-3">No maintenance records available.</div>
     }
   </div>
 </div>
+
+

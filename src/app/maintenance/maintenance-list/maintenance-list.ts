@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { MaintenanceRecord } from '../maintenance.model';
@@ -11,11 +11,13 @@ import { MaintenanceService } from '../maintenance.service';
   styleUrl: './maintenance-list.css',
 })
 export class MaintenanceList implements OnInit, OnDestroy{
-  maintenanceRecords: MaintenanceRecord[] = [];
+   @Input() maintenanceRecords: MaintenanceRecord[] = [];
   maintenanceId: string = '';
   private maintenanceChangeSub!: Subscription;
 
   constructor(private maintenanceService: MaintenanceService) {}
+
+
 
   ngOnInit() {
     // Subscribe to maintenance record changes
