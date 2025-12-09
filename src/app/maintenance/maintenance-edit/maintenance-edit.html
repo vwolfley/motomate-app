@@ -48,9 +48,19 @@
   <div class="card-body">
     <form id="maintenance-edit" #f="ngForm">
       <!-- <form id="maintenance-edit" (ngSubmit)="onSubmit(f)" #f="ngForm"></form> -->
-      <div class="input-group mb-2">
-        <span class="input-group-text" id="type">MaintenanceType</span>
+
+      <!-- <div class="input-group mb-2">
+        <span class="input-group-text" id="type">Maintenance Type</span>
         <input type="text" class="form-control" />
+      </div> -->
+
+      <div class="input-group mb-2">
+        <span class="input-group-text" id="type">Maintenance Type</span>
+        <select class="form-control" [(ngModel)]="maintenanceRecord.type" name="type" required>
+          <option *ngFor="let t of maintenanceTypes" [value]="t">
+            {{ t }}
+          </option>
+        </select>
       </div>
 
       <div class="input-group mb-2">
@@ -76,13 +86,56 @@
         <span class="input-group-text" id="mileage">Mileage</span>
         <input type="number" class="form-control" />
       </div>
-      <div class="input-group mb-2">
+      <!-- <div class="input-group mb-2">
         <span class="input-group-text" id="partsReplaced">Parts Replaced</span>
         <input type="text" class="form-control" />
+      </div> -->
+
+      <div class="mb-2">
+        <div class="input-group mb-2">
+          <span class="input-group-text">Parts Replaced</span>
+          <button class="btn btn-success" type="button" (click)="addPart()">Add Part</button>
+        </div>
+
+        <div
+          *ngFor="let part of maintenanceRecord.partsReplaced; let i = index"
+          class="input-group mb-2"
+        >
+          <input
+            type="text"
+            class="form-control w-50"
+            placeholder="Part name"
+            [(ngModel)]="part.name"
+            name="partName{{ i }}"
+            required
+          />
+          <span class="input-group-text" id="quantity">Qty</span>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Qty"
+            [(ngModel)]="part.quantity"
+            name="partQty{{ i }}"
+            min="1"
+          />
+          <span class="input-group-text" id="cost">Cost $</span>
+          <!-- <span class="input-group-text">$</span> -->
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Cost"
+            [(ngModel)]="part.cost"
+            name="partCost{{ i }}"
+            min="0"
+            step="0.01"
+          />
+
+          <button class="btn btn-danger" type="button" (click)="removePart(i)">X</button>
+        </div>
       </div>
+
       <div class="input-group mb-2">
-        <span class="input-group-text" id="totalCost">Total Cost</span>
-        <span class="input-group-text">$</span>
+        <span class="input-group-text" id="totalCost">Total Cost $</span>
         <input type="number" class="form-control" />
       </div>
       <!-- <div class="input-group mb-2">

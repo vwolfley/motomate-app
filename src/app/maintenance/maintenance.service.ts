@@ -44,10 +44,10 @@ export class MaintenanceService {
       next: (maintenanceRecords: MaintenanceRecord[]) => {
         this.maintenanceRecords = maintenanceRecords;
         this.maxMaintenanceId = this.getMaxId();
-        // Sort by make
+        // Sort by make date descending
         this.maintenanceRecords.sort((a, b) => {
-          if (a.datePerformed < b.datePerformed) return -1;
-          if (a.datePerformed > b.datePerformed) return 1;
+          if (a.datePerformed > b.datePerformed) return -1; // newer first
+          if (a.datePerformed < b.datePerformed) return 1; // older last
           return 0;
         });
         this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
@@ -71,8 +71,8 @@ export class MaintenanceService {
   // }
 
   getMaintenanceRecordsForVehicle(vehicleId: string): MaintenanceRecord[] {
-  return this.maintenanceRecords.filter(record => record.vehicleId === vehicleId);
-}
+    return this.maintenanceRecords.filter((record) => record.vehicleId === vehicleId);
+  }
 
   //***************************** */
   // Add a new maintenance record

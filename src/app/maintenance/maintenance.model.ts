@@ -3,8 +3,8 @@ import { Vehicle } from "../vehicles/vehicle.model";
 export class MaintenanceRecord {
   constructor(
     public id: string, // unique id for this record
-    public vehicleId: Vehicle |string, // which vehicle this maintenance belongs to
-    public type: MaintenanceType, // linked to enum
+    public vehicleId: Vehicle | string, // which vehicle this maintenance belongs to
+    public type: MaintenanceType | string, // linked to enum
     public action: string, // description of the maintenance action
     public datePerformed: Date, // when it was done
     public mileage: number, // vehicle mileage at the time
