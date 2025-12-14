@@ -29,7 +29,7 @@ export class MaintenanceDetail implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.maintenanceService.getMaintenanceRecords();
+
     this.route.params.subscribe((params) => {
       const id = params['id'];
       console.log('Maintenance Detail for vehicle ID: ' + id);

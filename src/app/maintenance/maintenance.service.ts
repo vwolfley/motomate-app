@@ -15,6 +15,7 @@ export class MaintenanceService {
   constructor(private http: HttpClient) {
     this.maintenanceRecords = this.maintenanceRecords;
     this.maxMaintenanceId = this.getMaxId();
+    this.fetchMaintenanceRecords();
   }
 
   // MongoDB endpoint URL
@@ -38,7 +39,7 @@ export class MaintenanceService {
   //***************************** */
   // Fetch Maintenance Records
   //***************************** */
-  getMaintenanceRecords() {
+  fetchMaintenanceRecords() {
     this.http.get<MaintenanceRecord[]>(this.maintenanceRecordsUrl).subscribe({
       // SUCCESS method
       next: (maintenanceRecords: MaintenanceRecord[]) => {

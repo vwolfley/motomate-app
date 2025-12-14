@@ -28,7 +28,6 @@ export class VehicleList implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.vehicles = this.vehiclesService.getVehicles();
-    this.maintenanceService.getMaintenanceRecords();
 
     // Subscribe to vehicle changes
     this.vehicleChangeSub = this.vehiclesService.vehicleListChangedEvent.subscribe(

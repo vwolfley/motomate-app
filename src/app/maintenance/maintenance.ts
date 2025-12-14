@@ -26,7 +26,7 @@ export class Maintenance implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.maintenanceService.getMaintenanceRecords();
+    this.maintenanceService.fetchMaintenanceRecords();
 
     this.vehicleChangeSub = this.vehiclesService.vehicleListChangedEvent.subscribe(
       (vehicleList: Vehicle[]) => {
