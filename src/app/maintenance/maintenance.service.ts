@@ -27,7 +27,7 @@ export class MaintenanceService {
     let maxId = 0;
 
     for (const record of this.maintenanceRecords) {
-      const currentId = parseInt(record.id);
+      const currentId = parseInt(record.maintId);
       if (currentId > maxId) {
         maxId = currentId;
       }
@@ -65,14 +65,16 @@ export class MaintenanceService {
   //***************************** */
   // Fetch Maintenance Record by ID
   //***************************** */
-  getMaintenanceRecord(id: string): MaintenanceRecord | null {
-    console.log('Fetching maintenance record with ID: ' + id);
-    return this.maintenanceRecords.find((record) => record.vehicleId === id) || null;
-  }
+  // getMaintenanceRecord(id: string): MaintenanceRecord | null {
+  //   console.log('Fetching maintenance record with ID: ' + id);
+  //   return this.maintenanceRecords.find((record) => record.vehicleId === id) || null;
+  // }
 
   getMaintenanceRecordsForVehicle(vehicleId: string): MaintenanceRecord[] {
-    return this.maintenanceRecords.filter((record) => record.vehicleId === vehicleId);
+    console.log('Fetching maintenance records for vehicleID: ' + vehicleId);
+    return this.maintenanceRecords.filter((record) => record.vehicleId === vehicleId) || [];
   }
+
 
   //***************************** */
   // Add a new maintenance record
@@ -82,7 +84,7 @@ export class MaintenanceService {
       return;
     }
     // make sure id of the new record is empty
-    newRecord.id = '';
+    newRecord.maintId = '';
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -116,13 +118,13 @@ export class MaintenanceService {
     }
 
     // set the id of the new record to the id of the old record
-    updatedRecord.id = originalRecord.id;
+    updatedRecord.maintId = originalRecord.maintId;
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     // update database
     this.http
-      .put(`${this.maintenanceRecordsUrl}/` + originalRecord.id, updatedRecord, {
+      .put(`${this.maintenanceRecordsUrl}/` + originalRecord.maintId, updatedRecord, {
         headers: headers,
       })
       .subscribe((response) => {
@@ -138,12 +140,12 @@ export class MaintenanceService {
     if (!record) {
       return;
     }
-    const pos = this.maintenanceRecords.findIndex((r) => r.id === record.id);
+    const pos = this.maintenanceRecords.findIndex((r) => r.maintId === record.maintId);
     if (pos < 0) {
       return;
     }
     // delete from database
-    this.http.delete(`${this.maintenanceRecordsUrl}/` + record.id).subscribe((response) => {
+    this.http.delete(`${this.maintenanceRecordsUrl}/` + record.maintId).subscribe((response) => {
       this.maintenanceRecords.splice(pos, 1);
       this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
     });

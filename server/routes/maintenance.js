@@ -21,11 +21,12 @@ router.get('/', async (req, res) => {
 // POST a new maintenance record
 router.post('/', async (req, res) => {
   try {
-    const maxMaintenanceId = await sequenceGenerator.nextId('maintenance');
+    const maxMaintenanceId = await sequenceGenerator.nextId('maintenances');
+    console.log('Next maintenance ID:', maxMaintenanceId);
 
     const maintenance = new Maintenance({
-      id: maxMaintenanceId,
-      vehicleId: req.body.vehicleId,
+      maintId: String(maxMaintenanceId),
+      vehicleId: String(req.body.vehicleId),
       type: req.body.type,
       action: req.body.action,
       datePerformed: req.body.datePerformed,
@@ -49,9 +50,9 @@ router.post('/', async (req, res) => {
 });
 
 // PUT update a maintenance record
-router.put('/:id', async (req, res) => {
+router.put('/:maintId', async (req, res) => {
   try {
-    const maintenance = await Maintenance.findOne({ id: req.params.id });
+    const maintenance = await Maintenance.findOne({ maintId: req.params.maintId });
 
     if (!maintenance) {
       return res.status(404).json({
@@ -70,7 +71,7 @@ router.put('/:id', async (req, res) => {
     maintenance.totalCost = req.body.totalCost;
     maintenance.notes = req.body.notes;
 
-    await Maintenance.updateOne({ id: req.params.id }, maintenance);
+    await Maintenance.updateOne({ maintId: req.params.maintId }, maintenance);
 
     res.status(204).json({
       message: 'Maintenance record updated successfully',
@@ -84,9 +85,9 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE a maintenance record
-router.delete('/:id', async (req, res) => {
+router.delete('/:maintId', async (req, res) => {
   try {
-    const maintenance = await Maintenance.findOne({ id: req.params.id });
+    const maintenance = await Maintenance.findOne({ maintId: req.params.maintId });
 
     if (!maintenance) {
       return res.status(404).json({

@@ -23,7 +23,7 @@ export class MaintenanceEdit implements OnInit {
 
   originalMaintenanceRecord!: MaintenanceRecord | null;
   maintenanceRecord: MaintenanceRecord = new MaintenanceRecord(
-    '', // id
+    '', // maintId
     '', // vehicleId
     MaintenanceType.OilChange, // default selected type
     '',
@@ -75,10 +75,11 @@ export class MaintenanceEdit implements OnInit {
   onSubmit(form: NgForm) {
     // get values from the form
     const value = form.value;
+    console.log(value);
 
     // create a new MaintenanceRecord object using the form values
     const newMaintenance = new MaintenanceRecord(
-      value.id,
+      value.maintId,
       this.vehicle.id,
       value.type,
       value.action,

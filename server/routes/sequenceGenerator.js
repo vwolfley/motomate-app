@@ -47,7 +47,7 @@ class SequenceGenerator {
         updateObject = { maxVehicleId: this.maxVehicleId };
         nextId = this.maxVehicleId;
         break;
-      case 'maintenance':
+      case 'maintenances':
         this.maxMaintenanceId++;
         updateObject = { maxMaintenanceId: this.maxMaintenanceId };
         nextId = this.maxMaintenanceId;

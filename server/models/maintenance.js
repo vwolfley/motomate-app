@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const maintenanceSchema = new mongoose.Schema(
   {
-    id: { type: String, required: true, unique: true },
+    maintId: { type: String, required: true, unique: true },
     vehicleId: { type: String, required: true },
     type: { type: String },
     action: { type: String },

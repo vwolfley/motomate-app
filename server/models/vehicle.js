@@ -35,7 +35,7 @@ const vehicleServiceSpecsSchema = new mongoose.Schema(
 
 const vehicleSchema = new mongoose.Schema(
   {
-    id: { type: String, required: true, unique: true }, // Or use mongoose.Types.ObjectId if preferred
+    id: { type: String, required: true, unique: true },
     year: { type: String, required: true },
     make: { type: String, required: true },
     model: { type: String, required: true },

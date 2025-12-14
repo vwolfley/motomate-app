@@ -22,6 +22,7 @@ export class Maintenance implements OnInit, OnDestroy {
   constructor(
     private vehiclesService: VehiclesService,
     private maintenanceService: MaintenanceService
+
   ) {}
 
   ngOnInit() {

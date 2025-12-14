@@ -32,7 +32,7 @@ export class MaintenanceDetail implements OnInit {
     this.maintenanceService.getMaintenanceRecords();
     this.route.params.subscribe((params) => {
       const id = params['id'];
-      console.log('Maintenance Detail for ID: ' + id);
+      console.log('Maintenance Detail for vehicle ID: ' + id);
       this.vehicle = this.vehiclesService.getVehicle(id)!;
       this.maintenanceRecords = this.maintenanceService.getMaintenanceRecordsForVehicle(id)!;
     });

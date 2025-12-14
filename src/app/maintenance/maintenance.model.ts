@@ -2,7 +2,7 @@ import { Vehicle } from "../vehicles/vehicle.model";
 
 export class MaintenanceRecord {
   constructor(
-    public id: string, // unique id for this record
+    public maintId: string, // unique id for this record
     public vehicleId: Vehicle | string, // which vehicle this maintenance belongs to
     public type: MaintenanceType | string, // linked to enum
     public action: string, // description of the maintenance action

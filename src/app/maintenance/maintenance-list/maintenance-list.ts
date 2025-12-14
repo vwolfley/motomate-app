@@ -10,16 +10,15 @@ import { MaintenanceService } from '../maintenance.service';
   templateUrl: './maintenance-list.html',
   styleUrl: './maintenance-list.css',
 })
-export class MaintenanceList implements OnInit, OnDestroy{
-   @Input() maintenanceRecords: MaintenanceRecord[] = [];
+export class MaintenanceList implements OnInit, OnDestroy {
+  @Input() maintenanceRecords: MaintenanceRecord[] = [];
   maintenanceId: string = '';
   private maintenanceChangeSub!: Subscription;
 
   constructor(private maintenanceService: MaintenanceService) {}
 
-
-
   ngOnInit() {
+    this.maintenanceService.getMaintenanceRecords();
     // Subscribe to maintenance record changes
     this.maintenanceChangeSub = this.maintenanceService.maintenanceListChangedEvent.subscribe(
       (maintenanceRecords: MaintenanceRecord[]) => {

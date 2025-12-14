@@ -19,10 +19,6 @@ export class MaintenanceItem {
     private route: ActivatedRoute,
   ) {}
 
-  onEdit() {
-    // Logic to edit a maintenance record
-  }
-
 
   onDelete() {
     this.maintenanceService.deleteMaintenanceRecord(this.maintenanceRecord);

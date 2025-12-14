@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
     const maxVehicleId = await sequenceGenerator.nextId('vehicles');
 
     const vehicle = new Vehicle({
-      id: maxVehicleId,
+      id: String(maxVehicleId),
       year: req.body.year,
       make: req.body.make,
       model: req.body.model,
