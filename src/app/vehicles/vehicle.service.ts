@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
@@ -12,9 +12,10 @@ export class VehiclesService {
   vehicleListChangedEvent = new Subject<Vehicle[]>();
   maxVehicleId: number = 0;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private ngZone: NgZone) {
     this.vehicles = this.vehicles;
     this.maxVehicleId = this.getMaxId();
+    this.fetchVehicles();
   }
 
   // MongoDB endpoint URL
@@ -23,7 +24,7 @@ export class VehiclesService {
   //***************************** */
   // Get Max ID
   //***************************** */
-  getMaxId(): number {
+  private getMaxId(): number {
     let maxId = 0;
 
     for (const vehicle of this.vehicles) {
@@ -39,20 +40,22 @@ export class VehiclesService {
   //***************************** */
   // Fetch All Vehicles Records
   //***************************** */
-  getVehicles() {
+  fetchVehicles() {
     this.http.get<Vehicle[]>(this.vehiclesUrl).subscribe({
       // SUCCESS method
       next: (vehicles: Vehicle[]) => {
-        this.vehicles = vehicles;
-        this.maxVehicleId = this.getMaxId();
-        // Sort by make
-        this.vehicles.sort((a, b) => {
-          if (a.make < b.make) return -1;
-          if (a.make > b.make) return 1;
-          return 0;
+        this.ngZone.run(() => {
+          this.vehicles = vehicles;
+          this.maxVehicleId = this.getMaxId();
+          // Sort by make
+          this.vehicles.sort((a, b) => {
+            if (a.make < b.make) return -1;
+            if (a.make > b.make) return 1;
+            return 0;
+          });
+          this.vehicleListChangedEvent.next(this.vehicles.slice());
+          // console.log(this.vehicles);
         });
-        this.vehicleListChangedEvent.next(this.vehicles.slice());
-        // console.log(this.vehicles);
       },
       // ERROR method
       error: (error: any) => {
@@ -62,6 +65,10 @@ export class VehiclesService {
         console.log('Vehicle fetch complete');
       },
     });
+  }
+
+  getVehicles() {
+    return this.vehicles.slice(); // returns current list
   }
   //***************************** */
   // Fetch Vehicle Record by ID

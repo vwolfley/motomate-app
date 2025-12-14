@@ -13,12 +13,14 @@ import { VehiclesService } from '../vehicle.service';
 export class VehicleList implements OnInit, OnDestroy {
   vehicles: Vehicle[] = [];
   vehicleId: string = '';
+  selectedVehicle!: Vehicle;
   private vehicleChangeSub!: Subscription;
 
   constructor(private vehiclesService: VehiclesService) {}
 
   ngOnInit() {
-    this.vehiclesService.getVehicles();
+    this.vehicles = this.vehiclesService.getVehicles();
+
     // Subscribe to vehicle changes
     this.vehicleChangeSub = this.vehiclesService.vehicleListChangedEvent.subscribe(
       (vehicles: Vehicle[]) => {

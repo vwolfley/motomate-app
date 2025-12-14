@@ -23,7 +23,7 @@ export class MaintenanceService {
   //***************************** */
   // Get Max ID
   //***************************** */
-  getMaxId(): number {
+  private getMaxId(): number {
     let maxId = 0;
 
     for (const record of this.maintenanceRecords) {
@@ -65,10 +65,10 @@ export class MaintenanceService {
   //***************************** */
   // Fetch Maintenance Record by ID
   //***************************** */
-  // getMaintenanceRecord(id: string): MaintenanceRecord | null {
-  //   console.log('Fetching maintenance record with ID: ' + id);
-  //   return this.maintenanceRecords.find((record) => record.vehicleId === id) || null;
-  // }
+  getMaintenanceRecord(id: string): MaintenanceRecord | null {
+    console.log('Fetching maintenance record with ID: ' + id);
+    return this.maintenanceRecords.find((record) => record.vehicleId === id) || null;
+  }
 
   getMaintenanceRecordsForVehicle(vehicleId: string): MaintenanceRecord[] {
     return this.maintenanceRecords.filter((record) => record.vehicleId === vehicleId);
@@ -77,14 +77,76 @@ export class MaintenanceService {
   //***************************** */
   // Add a new maintenance record
   //***************************** */
-  addMaintenanceRecord(newRecord: MaintenanceRecord) {}
+  addMaintenanceRecord(newRecord: MaintenanceRecord) {
+    if (!newRecord) {
+      return;
+    }
+    // make sure id of the new record is empty
+    newRecord.id = '';
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    // add to database
+    this.http
+      .post<{ message: string; maintenanceRecord: MaintenanceRecord }>(
+        this.maintenanceRecordsUrl,
+        newRecord,
+        {
+          headers: headers,
+        }
+      )
+      .subscribe((responseData) => {
+        // add new record to maintenanceRecords
+        this.maintenanceRecords.push(responseData.maintenanceRecord);
+        this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
+      });
+  }
+
   //***************************** */
   // Update an existing maintenance record
   //***************************** */
-  updateMaintenanceRecord(originalRecord: MaintenanceRecord, updatedRecord: MaintenanceRecord) {}
+  updateMaintenanceRecord(originalRecord: MaintenanceRecord, updatedRecord: MaintenanceRecord) {
+    if (!originalRecord || !updatedRecord) {
+      return;
+    }
+    // console.log('Updating maintenance record:', originalRecord, updatedRecord);
+    const pos = this.maintenanceRecords.indexOf(originalRecord);
+    if (pos < 0) {
+      return;
+    }
+
+    // set the id of the new record to the id of the old record
+    updatedRecord.id = originalRecord.id;
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    // update database
+    this.http
+      .put(`${this.maintenanceRecordsUrl}/` + originalRecord.id, updatedRecord, {
+        headers: headers,
+      })
+      .subscribe((response) => {
+        this.maintenanceRecords[pos] = updatedRecord;
+        this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
+      });
+  }
 
   //***************************** */
   // Delete a maintenance record
   //***************************** */
-  deleteMaintenanceRecord(record: MaintenanceRecord) {}
+  deleteMaintenanceRecord(record: MaintenanceRecord) {
+    if (!record) {
+      return;
+    }
+    const pos = this.maintenanceRecords.findIndex((r) => r.id === record.id);
+    if (pos < 0) {
+      return;
+    }
+    // delete from database
+    this.http.delete(`${this.maintenanceRecordsUrl}/` + record.id).subscribe((response) => {
+      this.maintenanceRecords.splice(pos, 1);
+      this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
+    });
+  }
+
 }

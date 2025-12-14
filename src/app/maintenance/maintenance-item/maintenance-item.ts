@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { MaintenanceRecord } from '../maintenance.model';
+import { MaintenanceService } from '../maintenance.service';
 
 @Component({
   selector: 'app-maintenance-item',
@@ -10,11 +13,19 @@ import { MaintenanceRecord } from '../maintenance.model';
 export class MaintenanceItem {
   @Input() maintenanceRecord!: MaintenanceRecord;
 
+  constructor(
+    private maintenanceService: MaintenanceService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
+
   onEdit() {
     // Logic to edit a maintenance record
   }
 
+
   onDelete() {
-    // Logic to delete a maintenance record
+    this.maintenanceService.deleteMaintenanceRecord(this.maintenanceRecord);
+    this.router.navigate(['/maintenance']);
   }
 }
