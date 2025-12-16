@@ -56,6 +56,7 @@ export class MaintenanceEdit implements OnInit {
       }
 
       this.vehicle = this.vehiclesService.getVehicle(id)!;
+      // this.originalMaintenanceRecord = this.maintenanceService.getMaintenanceRecord(id);
     });
     this.nativeWindow = this.windowRefService.getNativeWindow();
   }
@@ -103,5 +104,4 @@ export class MaintenanceEdit implements OnInit {
     // navigate back to the main maintenance view
     this.router.navigate(['/maintenance']);
   }
-
 }
