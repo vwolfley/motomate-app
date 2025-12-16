@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { Vehicle } from '../vehicle.model';
@@ -23,10 +24,17 @@ export class VehicleList implements OnInit, OnDestroy {
 
   constructor(
     private vehiclesService: VehiclesService,
-    private maintenanceService: MaintenanceService
+    private maintenanceService: MaintenanceService,
+    private route: ActivatedRoute
   ) {}
 
+  title = 'My Vehicles';
+
   ngOnInit() {
+    this.route.data.subscribe((data) => {
+      this.title = data['title'] || 'My Vehicles';
+    });
+
     this.vehicles = this.vehiclesService.getVehicles();
 
     // Subscribe to vehicle changes

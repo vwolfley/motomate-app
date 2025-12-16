@@ -67,7 +67,7 @@ export class MaintenanceService {
   // Fetch Maintenance Record by ID
   //***************************** */
   getMaintenanceRecordsForVehicle(vehicleId: string): MaintenanceRecord[] {
-    console.log('Fetching maintenance records for vehicleID: ' + vehicleId);
+    // console.log('Fetching maintenance records for vehicleID: ' + vehicleId);
     return this.maintenanceRecords.filter((record) => record.vehicleId === vehicleId);
   }
 
@@ -85,7 +85,7 @@ export class MaintenanceService {
 
     // add to database
     this.http
-      .post<{ message: string; maintenanceRecord: MaintenanceRecord }>(
+      .post<{ message: string; maintenance: MaintenanceRecord }>(
         this.maintenanceRecordsUrl,
         newRecord,
         {
@@ -94,7 +94,7 @@ export class MaintenanceService {
       )
       .subscribe((responseData) => {
         // add new record to maintenanceRecords
-        this.maintenanceRecords.push(responseData.maintenanceRecord);
+        this.maintenanceRecords.push(responseData.maintenance);
         this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
       });
   }
@@ -145,5 +145,4 @@ export class MaintenanceService {
       this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
     });
   }
-
 }

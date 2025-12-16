@@ -3,3 +3,8 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
 }
+
+.list-group-item.active {
+  background-color: #c7ef00;
+  border-color: #c7ef00;
+}

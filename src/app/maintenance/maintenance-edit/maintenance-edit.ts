@@ -21,10 +21,12 @@ export class MaintenanceEdit implements OnInit {
   vehicle!: Vehicle;
   nativeWindow: any;
 
+  editMode: boolean = false;
+
   originalMaintenanceRecord!: MaintenanceRecord | null;
   maintenanceRecord: MaintenanceRecord = new MaintenanceRecord(
-    '', // maintId
-    '', // vehicleId
+    this.editMode ? this.originalMaintenanceRecord!.maintId : '',
+    this.vehicle.id,
     MaintenanceType.OilChange, // default selected type
     '',
     new Date(),
@@ -36,8 +38,6 @@ export class MaintenanceEdit implements OnInit {
 
   maintenanceTypes = Object.values(MaintenanceType);
 
-  editMode: boolean = false;
-
   constructor(
     private vehiclesService: VehiclesService,
     private maintenanceService: MaintenanceService,
@@ -48,15 +48,30 @@ export class MaintenanceEdit implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      const id = params['id'];
+      const vehicleId = params['vehicleId'];
+      const maintId = params['maintId'];
 
-      if (!id) {
+      // ADD mode
+      if (!maintId) {
         this.editMode = false;
         return;
       }
 
-      this.vehicle = this.vehiclesService.getVehicle(id)!;
-      // this.originalMaintenanceRecord = this.maintenanceService.getMaintenanceRecord(id);
+      // Load vehicle
+      this.vehicle = this.vehiclesService.getVehicle(vehicleId)!;
+      // Get ALL maintenance records for vehicle
+      const records = this.maintenanceService.getMaintenanceRecordsForVehicle(vehicleId);
+      // Find the ONE we are editing
+      this.originalMaintenanceRecord = records.find((rec) => rec.maintId === maintId) || null;
+
+      if (!this.originalMaintenanceRecord) {
+        console.error('Maintenance record not found:', maintId);
+        return;
+      }
+
+      this.editMode = true;
+
+      this.maintenanceRecord = JSON.parse(JSON.stringify(this.originalMaintenanceRecord));
     });
     this.nativeWindow = this.windowRefService.getNativeWindow();
   }
@@ -70,13 +85,13 @@ export class MaintenanceEdit implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['/maintenance']);
+    this.router.navigate(['/maintenance', this.vehicle.id]);
   }
 
   onSubmit(form: NgForm) {
     // get values from the form
     const value = form.value;
-    console.log(value);
+    // console.log(value);
 
     // create a new MaintenanceRecord object using the form values
     const newMaintenance = new MaintenanceRecord(
@@ -86,10 +101,11 @@ export class MaintenanceEdit implements OnInit {
       value.action,
       value.datePerformed,
       value.mileage,
-      value.partsReplaced,
+      value.partsReplaced ?? [],
       value.totalCost,
       value.notes
     );
+    // console.log(newMaintenance);
 
     // check if we are in edit mode
     if (this.editMode === true) {
@@ -102,6 +118,6 @@ export class MaintenanceEdit implements OnInit {
     }
 
     // navigate back to the main maintenance view
-    this.router.navigate(['/maintenance']);
+    this.router.navigate(['/maintenance', this.vehicle.id]);
   }
 }

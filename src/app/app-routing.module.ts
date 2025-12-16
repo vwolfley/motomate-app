@@ -14,6 +14,7 @@ const appRoutes: Routes = [
   {
     path: 'vehicles',
     component: Vehicles,
+    data: { title: 'My Vehicle List' },
     children: [
       { path: 'new', component: VehicleEdit },
       { path: ':id', component: VehicleDetail },
@@ -23,10 +24,11 @@ const appRoutes: Routes = [
   {
     path: 'maintenance',
     component: Maintenance,
+    data: { title: 'Select a Vehicle for Maintenance' },
     children: [
       { path: 'new', component: VehicleEdit },
+      { path: ':vehicleId/:maintId/edit', component: MaintenanceEdit },
       { path: ':id', component: MaintenanceDetail },
-      { path: ':id/edit', component: MaintenanceEdit },
     ],
   },
 ];

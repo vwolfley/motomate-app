@@ -18,20 +18,18 @@ const purchaseInfoSchema = new mongoose.Schema(
   { _id: false }
 );
 
-const vehicleServiceSpecsSchema = new mongoose.Schema(
-  {
-    oilType: { type: String },
-    oilWeight: { type: String },
-    oilCapacity: { type: String },
-    oilFilter: { type: String },
-    airFilter: { type: String },
-    cabinAirFilter: { type: String },
-    batteryGroupSize: { type: String },
-    tireSize: { type: String },
-    wiperBladeSizeDriver: { type: String },
-    wiperBladeSizePassenger: { type: String },
-  },
-);
+const vehicleServiceSpecsSchema = new mongoose.Schema({
+  oilType: { type: String },
+  oilWeight: { type: String },
+  oilCapacity: { type: String },
+  oilFilter: { type: String },
+  airFilter: { type: String },
+  cabinAirFilter: { type: String },
+  batteryGroupSize: { type: String },
+  tireSize: { type: String },
+  wiperBladeSizeDriver: { type: String },
+  wiperBladeSizePassenger: { type: String },
+});
 
 const vehicleSchema = new mongoose.Schema(
   {

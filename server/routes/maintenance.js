@@ -19,10 +19,15 @@ router.get('/', async (req, res) => {
 });
 
 // POST a new maintenance record
-router.post('/', async (req, res) => {
+router.post('/:vehicleId/:maintId', async (req, res) => {
   try {
     const maxMaintenanceId = await sequenceGenerator.nextId('maintenances');
     console.log('Next maintenance ID:', maxMaintenanceId);
+
+    // Check that the ID was generated correctly
+    if (!maxMaintenanceId && maxMaintenanceId !== 0) {
+      return res.status(500).json({ message: 'Failed to generate a unique maintenance ID' });
+    }
 
     const maintenance = new Maintenance({
       maintId: String(maxMaintenanceId),
@@ -35,11 +40,12 @@ router.post('/', async (req, res) => {
       totalCost: req.body.totalCost,
       notes: req.body.notes,
     });
+    // Save to MongoDB
     const createdMaintenance = await maintenance.save();
 
     res.status(201).json({
       message: 'Maintenance record added successfully',
-      maintenance: createdMaintenance,
+      maintenanceRecord: createdMaintenance,
     });
   } catch (error) {
     res.status(500).json({
@@ -50,7 +56,7 @@ router.post('/', async (req, res) => {
 });
 
 // PUT update a maintenance record
-router.put('/:maintId', async (req, res) => {
+router.put('/:vehicleId/:maintId', async (req, res) => {
   try {
     const maintenance = await Maintenance.findOne({ maintId: req.params.maintId });
 
@@ -85,7 +91,7 @@ router.put('/:maintId', async (req, res) => {
 });
 
 // DELETE a maintenance record
-router.delete('/:maintId', async (req, res) => {
+router.delete('/:vehicleId/:maintId', async (req, res) => {
   try {
     const maintenance = await Maintenance.findOne({ maintId: req.params.maintId });
 
