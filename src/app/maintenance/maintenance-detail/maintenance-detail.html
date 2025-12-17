@@ -34,7 +34,7 @@
   </div>
 </div>
 <!-- Details list -->
-<div class="card shadow-sm">
+<div *ngIf="vehicle" class="card shadow-sm">
   <app-maintenance-list
     [vehicleId]="vehicle.id"
     [maintenanceRecords]="maintenanceRecords"

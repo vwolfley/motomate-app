@@ -21,13 +21,15 @@ export class MaintenanceList implements OnInit, OnDestroy {
   ngOnInit() {
     // Subscribe to maintenance record changes
     this.maintenanceChangeSub = this.maintenanceService.maintenanceListChangedEvent.subscribe(
-      (maintenanceRecords: MaintenanceRecord[]) => {
-        this.maintenanceRecords = maintenanceRecords;
+      (records: MaintenanceRecord[]) => {
+        this.maintenanceRecords = records.filter(
+          (rec) => rec && rec.vehicleId === this.vehicleId
+        );
       }
     );
   }
 
   ngOnDestroy() {
-    this.maintenanceChangeSub.unsubscribe();
+    this.maintenanceChangeSub?.unsubscribe();
   }
 }

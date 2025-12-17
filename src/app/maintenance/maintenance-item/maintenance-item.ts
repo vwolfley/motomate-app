@@ -17,12 +17,12 @@ export class MaintenanceItem {
   constructor(
     private maintenanceService: MaintenanceService,
     private router: Router,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
-
   onDelete() {
+    console.log('Deleting maintenance record ID: ' + this.maintenanceRecord.maintId);
     this.maintenanceService.deleteMaintenanceRecord(this.maintenanceRecord);
-    this.router.navigate(['/maintenance']);
+    this.router.navigate(['/maintenance', this.vehicleId]);
   }
 }

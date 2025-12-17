@@ -16,7 +16,6 @@ import { MaintenanceService } from '../maintenance.service';
 })
 export class MaintenanceDetail implements OnInit {
   vehicle!: Vehicle;
-  // maintenance!: MaintenanceRecord[];
   maintenanceRecords: MaintenanceRecord[] = [];
   nativeWindow: any;
 

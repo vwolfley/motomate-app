@@ -74,28 +74,38 @@ export class MaintenanceService {
   //***************************** */
   // Add a new maintenance record
   //***************************** */
-  addMaintenanceRecord(newRecord: MaintenanceRecord) {
+  addMaintenanceRecord(newRecord: MaintenanceRecord): void {
     if (!newRecord) {
       return;
     }
     // make sure id of the new record is empty
-    newRecord.maintId = '';
+    const recordToSave: MaintenanceRecord = {
+      ...newRecord,
+      maintId: '',
+    };
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
     // add to database
     this.http
       .post<{ message: string; maintenance: MaintenanceRecord }>(
         this.maintenanceRecordsUrl,
-        newRecord,
-        {
-          headers: headers,
-        }
+        recordToSave,
+        { headers }
       )
-      .subscribe((responseData) => {
-        // add new record to maintenanceRecords
-        this.maintenanceRecords.push(responseData.maintenance);
-        this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
+      .subscribe({
+        next: (response) => {
+          if (!response?.maintenance) {
+            console.error('Invalid maintenance record returned', response);
+            return;
+          }
+
+          this.maintenanceRecords = [...this.maintenanceRecords, response.maintenance];
+
+          this.maintenanceListChangedEvent.next(this.maintenanceRecords.slice());
+        },
+        error: (err) => {
+          console.error('Failed to add maintenance record', err);
+        },
       });
   }
 
