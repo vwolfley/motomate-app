@@ -17,14 +17,14 @@
         <div class="mt-1 text-muted">Notes: {{ maintenanceRecord.notes }}</div>
       </div>
       <div class="">
-        <small class="text-muted"
+        <small class="text-muted"`
           >Milage: {{ maintenanceRecord.mileage | number : '1.0-0' }} | Total Cost:
           {{ maintenanceRecord.totalCost | currency : 'USD' : 'symbol' : '1.2-2' }}</small
         >
       </div>
     </div>
     <div class="d-flex flex-column justify-content-start gap-2 ms-3">
-      <button class="btn btn-success btn-sm" type="button" [routerLink]="['edit']">Edit</button>
+      <button class="btn btn-success btn-sm" type="button" [routerLink]="['/maintenance', vehicleId, maintenanceRecord.maintId,'edit']">Edit</button>
       <button class="btn btn-danger btn-sm" type="button" (click)="onDelete()">Delete</button>
     </div>
   </div>

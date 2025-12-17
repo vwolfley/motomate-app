@@ -12,6 +12,7 @@ import { MaintenanceService } from '../maintenance.service';
 })
 export class MaintenanceList implements OnInit, OnDestroy {
   @Input() maintenanceRecords: MaintenanceRecord[] = [];
+  @Input() vehicleId!: string;
   maintenanceId: string = '';
   private maintenanceChangeSub!: Subscription;
 

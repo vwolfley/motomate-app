@@ -25,8 +25,8 @@ export class MaintenanceEdit implements OnInit {
 
   originalMaintenanceRecord!: MaintenanceRecord | null;
   maintenanceRecord: MaintenanceRecord = new MaintenanceRecord(
-    this.editMode ? this.originalMaintenanceRecord!.maintId : '',
-    this.vehicle.id,
+    '',
+    '',
     MaintenanceType.OilChange, // default selected type
     '',
     new Date(),
@@ -51,14 +51,16 @@ export class MaintenanceEdit implements OnInit {
       const vehicleId = params['vehicleId'];
       const maintId = params['maintId'];
 
+      // Load vehicle
+      this.vehicle = this.vehiclesService.getVehicle(vehicleId)!;
+
       // ADD mode
       if (!maintId) {
         this.editMode = false;
+        this.maintenanceRecord.vehicleId = vehicleId;
         return;
       }
 
-      // Load vehicle
-      this.vehicle = this.vehiclesService.getVehicle(vehicleId)!;
       // Get ALL maintenance records for vehicle
       const records = this.maintenanceService.getMaintenanceRecordsForVehicle(vehicleId);
       // Find the ONE we are editing
@@ -95,7 +97,9 @@ export class MaintenanceEdit implements OnInit {
 
     // create a new MaintenanceRecord object using the form values
     const newMaintenance = new MaintenanceRecord(
-      value.maintId,
+      this.editMode
+        ? this.originalMaintenanceRecord!.maintId
+        : '',
       this.vehicle.id,
       value.type,
       value.action,

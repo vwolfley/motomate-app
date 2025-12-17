@@ -12,6 +12,7 @@ import { MaintenanceService } from '../maintenance.service';
 })
 export class MaintenanceItem {
   @Input() maintenanceRecord!: MaintenanceRecord;
+  @Input() vehicleId!: string;
 
   constructor(
     private maintenanceService: MaintenanceService,

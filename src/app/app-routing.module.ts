@@ -27,6 +27,7 @@ const appRoutes: Routes = [
     data: { title: 'Select a Vehicle for Maintenance' },
     children: [
       { path: 'new', component: VehicleEdit },
+      { path: ':vehicleId/new', component: MaintenanceEdit },
       { path: ':vehicleId/:maintId/edit', component: MaintenanceEdit },
       { path: ':id', component: MaintenanceDetail },
     ],

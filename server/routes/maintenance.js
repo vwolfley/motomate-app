@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 // POST a new maintenance record
-router.post('/:vehicleId/:maintId', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const maxMaintenanceId = await sequenceGenerator.nextId('maintenances');
     console.log('Next maintenance ID:', maxMaintenanceId);
@@ -40,7 +40,7 @@ router.post('/:vehicleId/:maintId', async (req, res) => {
       totalCost: req.body.totalCost,
       notes: req.body.notes,
     });
-    // Save to MongoDB
+// Save to MongoDB
     const createdMaintenance = await maintenance.save();
 
     res.status(201).json({
@@ -56,7 +56,7 @@ router.post('/:vehicleId/:maintId', async (req, res) => {
 });
 
 // PUT update a maintenance record
-router.put('/:vehicleId/:maintId', async (req, res) => {
+router.put('/:vehicleId', async (req, res) => {
   try {
     const maintenance = await Maintenance.findOne({ maintId: req.params.maintId });
 
@@ -91,7 +91,7 @@ router.put('/:vehicleId/:maintId', async (req, res) => {
 });
 
 // DELETE a maintenance record
-router.delete('/:vehicleId/:maintId', async (req, res) => {
+router.delete('/:maintId', async (req, res) => {
   try {
     const maintenance = await Maintenance.findOne({ maintId: req.params.maintId });
 
